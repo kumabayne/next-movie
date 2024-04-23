@@ -1,7 +1,7 @@
 import { Images, Videos } from "./media";
 import { Cast, Crew } from "./people";
 import { Reviews } from "./reviews";
-import { ExternalIds, Keywords } from "./shared";
+import { ExternalIds, Keywords, Recommendations } from "./shared";
 
 export type Movie = {
   adult: boolean;
@@ -63,6 +63,7 @@ export type MovieDetails = {
     iso_3166_1: string;
     name: string;
   }[];
+  recommendations: Recommendations;
   release_date: string;
   release_dates: ReleaseDates;
   revenue: number;

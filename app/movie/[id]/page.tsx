@@ -10,9 +10,10 @@ import Media from "@/src/components/Media";
 import ExternalLinks from "@/src/components/ExternalLinks";
 import Facts from "@/src/components/Facts";
 import Keywords from "@/src/components/Keywords";
+import Recommendations from "@/src/components/Recommendations";
 
 async function getData(id: string) {
-  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=videos,external_ids,images,credits,keywords,release_dates,reviews&include_image_language=en,null`;
+  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=videos,external_ids,images,credits,keywords,release_dates,reviews,recommendations&include_image_language=en,null`;
 
   const res = await fetch(url, {
     method: "GET",
@@ -90,6 +91,7 @@ export default async function MoviePage({
       <Media className="mb-4" images={data.images} videos={data.videos} />
       <Facts className="mb-4" data={data} />
       <Keywords className="mb-4" keywords={data.keywords} />
+      <Recommendations recommendations={data.recommendations} />
     </Container>
   );
 }
