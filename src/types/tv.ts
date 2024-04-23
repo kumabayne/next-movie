@@ -1,6 +1,6 @@
 import { Videos } from "./media";
 import { Cast, Crew } from "./people";
-import { ExternalIdsTVShow, Recommendations } from "./shared";
+import { ExternalIdsTVShow, Keyword, Recommendations } from "./shared";
 
 export type TVShow = {
   adult: boolean;
@@ -59,6 +59,9 @@ export type TVShowDetails = {
   homepage: string;
   id: number;
   in_production: boolean;
+  keywords: {
+    results: Keyword[];
+  };
   languages: string[];
   last_episode_to_air: {
     air_date: string;

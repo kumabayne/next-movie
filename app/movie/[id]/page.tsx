@@ -90,7 +90,7 @@ export default async function MoviePage({
       </div>
       <Media className="mb-4" images={data.images} videos={data.videos} />
       <Facts className="mb-4" data={data} />
-      <Keywords className="mb-4" keywords={data.keywords} />
+      <Keywords className="mb-4" keywords={data.keywords.keywords} />
       <Recommendations recommendations={data.recommendations} />
     </Container>
   );

@@ -6,9 +6,11 @@ import ExternalLinks from "@/src/components/ExternalLinks";
 import CastRow from "@/src/components/CastRow";
 import Crew from "@/src/components/Crew";
 import Recommendations from "@/src/components/Recommendations";
+import Facts from "@/src/components/Facts";
+import Keywords from "@/src/components/Keywords";
 
 async function getData(id: string) {
-  const url = `https://api.themoviedb.org/3/tv/${id}?language=en-US&append_to_response=videos,content_ratings,external_ids,aggregate_credits,recommendations`;
+  const url = `https://api.themoviedb.org/3/tv/${id}?language=en-US&append_to_response=videos,content_ratings,external_ids,aggregate_credits,recommendations,keywords`;
 
   const res = await fetch(url, {
     method: "GET",
@@ -72,6 +74,8 @@ export default async function TVPage({ params }: { params: { id: string } }) {
           mediaType={"tvshow"}
         />
       )}
+      <Facts className="mb-4" data={data} />
+      <Keywords className="mb-4" keywords={data.keywords.results} />
       <Recommendations recommendations={data.recommendations} />
     </Container>
   );
