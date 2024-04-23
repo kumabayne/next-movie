@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Keywords } from "../types/shared";
+import { Keyword } from "../types/shared";
 import KeywordCard from "./KeywordCard";
 
 export default function Keywords({
@@ -7,13 +7,13 @@ export default function Keywords({
   keywords,
 }: {
   className?: string;
-  keywords: Keywords;
+  keywords: Keyword[];
 }) {
   return (
     <div className={clsx(className && className)}>
       <h2 className="font-semibold mb-2 text-zinc-100">Keywords</h2>
       <div className="flex flex-wrap gap-2">
-        {keywords.keywords.map((keyword) => (
+        {keywords.map((keyword) => (
           <KeywordCard key={keyword.id} keyword={keyword} />
         ))}
       </div>

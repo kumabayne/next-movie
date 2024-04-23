@@ -1,7 +1,7 @@
 import { Images, Videos } from "./media";
 import { Cast, Crew } from "./people";
 import { Reviews } from "./reviews";
-import { ExternalIds, Keywords, Recommendations } from "./shared";
+import { ExternalIds, Keyword, Recommendations } from "./shared";
 
 export type Movie = {
   adult: boolean;
@@ -47,7 +47,9 @@ export type MovieDetails = {
   id: number;
   images: Images;
   imdb_id: string;
-  keywords: Keywords;
+  keywords: {
+    keywords: Keyword[];
+  };
   original_language: string;
   original_title: string;
   overview: string;

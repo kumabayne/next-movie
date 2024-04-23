@@ -1,11 +1,9 @@
 import { Movie } from "./movie";
 import { TVShow } from "./tv";
 
-export type Keywords = {
-  keywords: {
-    id: number;
-    name: string;
-  }[];
+export type Keyword = {
+  id: number;
+  name: string;
 };
 
 export type ExternalIds = {

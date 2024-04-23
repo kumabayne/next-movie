@@ -2,7 +2,7 @@ import { Images, Videos } from "../types/media";
 import { Movie, MovieDetails } from "../types/movie";
 import { ExternalIds } from "../types/shared";
 import { Person } from "../types/people";
-import { Keywords, Recommendations } from "../types/shared";
+import { Keyword, Recommendations } from "../types/shared";
 import { TVShow } from "../types/tv";
 
 export const externalIds: ExternalIds = {
@@ -1885,7 +1885,7 @@ export const images: Images = {
   ],
 };
 
-export const keywords: Keywords = {
+export const keywords = {
   keywords: [
     {
       id: 9715,
