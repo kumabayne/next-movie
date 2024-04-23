@@ -1,12 +1,12 @@
 import { Videos } from "./media";
 import { Cast, Crew } from "./people";
-import { ExternalIdsTVShow } from "./shared";
+import { ExternalIdsTVShow, Recommendations } from "./shared";
 
 export type TVShow = {
   adult: boolean;
   backdrop_path: string;
   character?: string;
-  content_ratings: {
+  content_ratings?: {
     results: {
       descriptors: string[] | [];
       iso_3166_1: string;
@@ -15,6 +15,7 @@ export type TVShow = {
   };
   credit_id?: string;
   episode_count?: number;
+  first_air_date?: string;
   genre_ids: number[];
   id: number;
   media_type: string;
@@ -25,6 +26,7 @@ export type TVShow = {
   overview: string;
   popularity: number;
   poster_path: string;
+  recommendations?: Recommendations;
   vote_average: number;
   vote_count: number;
 };
@@ -113,6 +115,7 @@ export type TVShowDetails = {
     iso_3166_1: string;
     name: string;
   }[];
+  recommendations?: Recommendations;
   seasons: {
     air_date: string;
     episode_count: number;

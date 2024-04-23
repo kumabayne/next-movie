@@ -1,3 +1,6 @@
+import { Movie } from "./movie";
+import { TVShow } from "./tv";
+
 export type Keywords = {
   keywords: {
     id: number;
@@ -20,3 +23,10 @@ export interface ExternalIdsTVShow extends ExternalIds {
   tvdb_id: number | null;
   tvrage_id: number | null;
 }
+
+export type Recommendations = {
+  page: number;
+  results: Movie[] | TVShow[];
+  total_pages: number;
+  total_results: number;
+};
