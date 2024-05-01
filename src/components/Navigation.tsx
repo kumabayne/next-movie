@@ -15,10 +15,10 @@ const navigation = [
 
 export default function Navigation() {
   return (
-    <Disclosure as="nav" className="bg-zinc-950/40 mb-4 py-2 shadow-sm">
+    <Disclosure as="nav" className="bg-zinc-950/40 mb-4 py-2 shadow-sm sm:py-4">
       {({ open }) => (
         <>
-          <Container className="flex gap-2 items-center justify-between">
+          <Container className="flex gap-2 items-center justify-between sm:gap-4">
             <Logo />
             <Search />
             <Disclosure.Button
