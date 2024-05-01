@@ -4,5 +4,5 @@ import Logo from "./Logo";
 
 test("Logo", () => {
   render(<Logo />);
-  expect(screen.getByRole("heading")).toHaveTextContent("Movie App");
+  expect(screen.getByRole("heading")).toHaveTextContent(/film snail/i);
 });

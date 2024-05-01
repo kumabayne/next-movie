@@ -5,7 +5,7 @@ import { keywords } from "../utils/test-data";
 
 describe("Keywords", () => {
   it("renders heading", () => {
-    render(<Keywords keywords={keywords} />);
+    render(<Keywords keywords={keywords.keywords} />);
     expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
       "Keywords"
     );
