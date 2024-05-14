@@ -9,12 +9,14 @@ import { TbUserFilled } from "react-icons/tb";
 
 export default function SearchResult({
   item,
+  type,
 }: {
   item: Movie | TVShow | Person;
+  type?: string;
 }) {
   return (
     <Link
-      href={`/${item.media_type}/${item.id}`}
+      href={`/${item.media_type || type}/${item.id}`}
       className="gap-2 grid grid-cols-search items-center"
     >
       {(("profile_path" in item && item.profile_path) ||

@@ -81,17 +81,26 @@ export default async function MoviePage({
         <div className="mb-2">
           <h2 className="font-semibold text-zinc-100">Reviews</h2>
         </div>
-        <Review review={data.reviews.results[0]} />
-        <div className="flex justify-end mt-2">
-          <Link className="text-pink-500 text-sm" href={`${id}/reviews`}>
-            Read More Reviews
-          </Link>
-        </div>
+        {data.reviews.results.length === 0 && (
+          <p className="italic text-sm text-zinc-400">No Reviews yet.</p>
+        )}
+        {data.reviews.results.length > 0 && (
+          <>
+            <Review review={data.reviews.results[0]} />
+            <div className="flex justify-end mt-2">
+              <Link className="text-pink-500 text-sm" href={`${id}/reviews`}>
+                Read More Reviews
+              </Link>
+            </div>
+          </>
+        )}
       </div>
       <Media className="mb-4" images={data.images} videos={data.videos} />
       <Facts className="mb-4" data={data} />
       <Keywords className="mb-4" keywords={data.keywords.keywords} />
-      <Recommendations recommendations={data.recommendations} />
+      {data.recommendations.results.length > 0 && (
+        <Recommendations recommendations={data.recommendations} />
+      )}
     </Container>
   );
 }

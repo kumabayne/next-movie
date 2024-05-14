@@ -33,9 +33,13 @@ export default function Facts({
       {"budget" in data && (
         <div>
           <p className="font-medium text-sm text-zinc-100">Budget:</p>
-          <p className="text-sm text-zinc-400">
-            {convertNumberToDollars(data.budget)}
-          </p>
+          {data.status !== "Released" ? (
+            <p className="text-sm text-zinc-400">-</p>
+          ) : (
+            <p className="text-sm text-zinc-400">
+              {convertNumberToDollars(data.budget)}
+            </p>
+          )}
         </div>
       )}
       {"type" in data && (
@@ -47,9 +51,13 @@ export default function Facts({
       {"revenue" in data && (
         <div>
           <p className="font-medium text-sm text-zinc-100">Revenue:</p>
-          <p className="text-sm text-zinc-400">
-            {convertNumberToDollars(data.revenue)}
-          </p>
+          {data.status !== "Released" ? (
+            <p className="text-sm text-zinc-400">-</p>
+          ) : (
+            <p className="text-sm text-zinc-400">
+              {convertNumberToDollars(data.revenue)}
+            </p>
+          )}
         </div>
       )}
       {"networks" in data && (
