@@ -1,7 +1,7 @@
 "use client";
 
 import { formatDate } from "../utils/helpers";
-import { Review } from "../types/reviews";
+import { Review as ReviewType } from "../types/reviews";
 import clsx from "clsx";
 import Image from "next/image";
 import { configuration } from "../utils/data";
@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Rating from "./Rating";
 
-export default function Review({ review }: { review: Review }) {
+export default function Review({ review }: { review: ReviewType }) {
   const reviewRef = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isClamped, setIsClamped] = useState(false);
