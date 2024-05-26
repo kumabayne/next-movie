@@ -21,17 +21,19 @@ describe("HeroCard", () => {
     vote_count: 852,
   };
   it("renders a link to movie page", () => {
-    render(<HeroCard item={item} />);
+    render(<HeroCard item={item} title="Now Playing" />);
     expect(screen.getByRole("link")).toHaveAttribute("href", "/movie/693134");
   });
 
   it("renders an image with alt text", () => {
-    render(<HeroCard item={item} />);
+    render(<HeroCard item={item} title="Now Playing" />);
     expect(screen.getByAltText(/dune: part two/i)).toBeInTheDocument();
   });
 
   it("renders a title", () => {
-    render(<HeroCard item={item} />);
-    expect(screen.getByRole("heading")).toHaveTextContent("Dune: Part Two");
+    render(<HeroCard item={item} title="Now Playing" />);
+    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
+      "Dune: Part Two"
+    );
   });
 });

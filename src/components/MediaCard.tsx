@@ -10,24 +10,21 @@ import clsx from "clsx";
 
 export default function MediaCard({ item }: { item: Movie | Person | TVShow }) {
   return (
-    <Link
-      className="relative w-movie-card"
-      href={`/${item.media_type}/${item.id}`}
-    >
+    <Link className="relative block" href={`/${item.media_type}/${item.id}`}>
       <Image
-        className="h-auto rounded-sm w-auto"
+        className="rounded-sm md:rounded-md"
         src={
           "profile_path" in item && !item.profile_path
             ? ""
             : `${configuration.images.secure_base_url}${
                 "poster_path" in item
-                  ? `${configuration.images.poster_sizes[1]}${item.poster_path}`
-                  : `${configuration.images.profile_sizes[1]}${item.profile_path}`
+                  ? `${configuration.images.poster_sizes[4]}${item.poster_path}`
+                  : `${configuration.images.profile_sizes[2]}${item.profile_path}`
               }`
         }
         alt={"title" in item ? item.title : item.name}
-        width="80"
-        height="120"
+        width="160"
+        height="240"
         loading="lazy"
       />
       <h2

@@ -9,7 +9,11 @@ import { useState } from "react";
 import Modal from "./Modal";
 import { TVShowDetails } from "../types/tv";
 
-export default function MediaHero({ data }: { data: MovieDetails | TVShowDetails }) {
+export default function MediaHero({
+  data,
+}: {
+  data: MovieDetails | TVShowDetails;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const trailers = data.videos.results.filter(
     (video) => video.type === "Trailer"
@@ -19,7 +23,7 @@ export default function MediaHero({ data }: { data: MovieDetails | TVShowDetails
     <>
       <div className="relative">
         <Image
-          className="mb-4 rounded"
+          className="mb-4 rounded md:rounded-none"
           src={`${configuration.images.secure_base_url}${configuration.images.backdrop_sizes[3]}${data.backdrop_path}`}
           alt={"title" in data ? data.title : data.name}
           width="1920"
@@ -31,12 +35,12 @@ export default function MediaHero({ data }: { data: MovieDetails | TVShowDetails
         </div>
         {trailers.length > 0 && (
           <button
-            className="absolute backdrop-blur-md bg-white/10 bottom-2 drop-shadow flex font-semibold gap-1 items-center px-2 py-1 right-2 rounded-sm shadow text-sm text-white"
+            className="absolute backdrop-blur-md bg-white/10 bottom-2 drop-shadow flex font-semibold gap-1 items-center px-2 py-1 right-2 rounded-sm shadow text-sm text-white md:bottom-1/2 md:right-1/2 md:translate-x-1/2 md:translate-y-1/2 md:rounded-full md:p-4 md:drop-shadow md:justify-center"
             onClick={() => setIsOpen(true)}
             type="button"
           >
-            <PlayIcon className="h-5 w-5" />
-            Trailer
+            <PlayIcon className="h-5 w-5 md:w-10 md:h-10" />
+            <span className="md:sr-only">Trailer</span>
           </button>
         )}
       </div>

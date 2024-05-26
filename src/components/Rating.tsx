@@ -6,7 +6,7 @@ export default function Rating({
   fixed?: number;
 }) {
   return (
-    <p className="bg-pink-500 font-semibold px-1 rounded-sm shadow text-zinc-100 text-xs">
+    <p className="bg-pink-500 font-semibold px-1 rounded-sm shadow text-zinc-100 text-xs md:text-sm md:font-bold">
       {rating.toFixed(fixed)}
     </p>
   );

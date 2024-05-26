@@ -31,7 +31,7 @@ export default async function MoviePage({
   const data: ReviewsType = await getData(id);
 
   return (
-    <Container>
+    <Container className="md:mt-2">
       <Link
         className="flex gap-2 items-center mb-2 text-sm text-zinc-400"
         href={`/movie/${id}`}

@@ -10,7 +10,7 @@ export default function Search() {
 
   return (
     <form
-      className="mx-2 relative w-full"
+      className="relative w-full max-w-80"
       onSubmit={(e) => {
         e.preventDefault();
         e.stopPropagation();

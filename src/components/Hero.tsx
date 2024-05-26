@@ -1,4 +1,3 @@
-import Container from "./Container";
 import HeroCard from "./HeroCard";
 import Swiper from "./Swiper";
 import { Movie } from "../types/movie";
@@ -31,8 +30,10 @@ export default async function Hero({
   const data = await getData(category);
 
   return (
-    <Container className="mb-4 relative">
-      <h1 className="font-semibold mb-2 text-xl text-zinc-100">{title}</h1>
+    <div className="mb-4 relative px-4 md:px-0">
+      <h1 className="font-semibold mb-2 text-xl text-zinc-100 md:hidden">
+        {title}
+      </h1>
       <Swiper
         params={{
           autoplay: {
@@ -47,10 +48,10 @@ export default async function Hero({
       >
         {data.results.map((item: Movie) => (
           <swiper-slide key={item.id} lazy="true" style={{ width: "100%" }}>
-            <HeroCard key={item.id} item={item} />
+            <HeroCard key={item.id} item={item} title={title} />
           </swiper-slide>
         ))}
       </Swiper>
-    </Container>
+    </div>
   );
 }

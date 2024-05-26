@@ -1,5 +1,5 @@
 import { FaFacebook, FaInstagram, FaXTwitter } from "react-icons/fa6";
-import { ExternalIds } from "../types/movie";
+import { ExternalIds } from "../types/shared";
 import Link from "next/link";
 import { HomeIcon } from "@heroicons/react/24/outline";
 
@@ -32,7 +32,7 @@ export default function ExternalLinks({
   ];
 
   return (
-    <div className="flex gap-2 mb-4 text-indigo-600">
+    <div className="flex gap-2 mb-4 text-indigo-600 md:justify-end md:mb-2">
       {socialLinks.map((link, idx) => {
         if (link.id) {
           return (
