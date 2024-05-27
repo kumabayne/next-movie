@@ -10,7 +10,7 @@ export default function Search() {
 
   return (
     <form
-      className="relative w-full max-w-80"
+      className="relative w-full max-w-72"
       onSubmit={(e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -28,9 +28,12 @@ export default function Search() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button className="absolute p-1.5 right-0 text-zinc-400" type="submit">
+      <button
+        className="absolute bg-white rounded-full p-1.5 m-0.5 right-0 text-zinc-800"
+        type="submit"
+      >
         <div className="sr-only">Search</div>
-        <MagnifyingGlassIcon className="h-5 w-5" />
+        <MagnifyingGlassIcon className="h-4 w-4" />
       </button>
     </form>
   );

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Outfit } from "next/font/google";
 import Navigation from "@/src/components/Navigation";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import MobileNav from "@/src/components/MobileNav";
 
-const dmSans = DM_Sans({
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["200", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -20,9 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.className} bg-zinc-900 relative`}>
+      <body
+        className={cn(
+          "min-h-screen font-sans antialiased bg-slate-950 mb-[58px]",
+          outfit.variable
+        )}
+      >
         <Navigation />
         {children}
+        <div className="bg-slate-950 border-t border-white/10 fixed bottom-0 z-50 left-0 right-0">
+          <MobileNav />
+        </div>
       </body>
     </html>
   );

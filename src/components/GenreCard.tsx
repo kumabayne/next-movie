@@ -12,7 +12,7 @@ export default function GenreCard({
   return (
     <Link
       className={clsx(
-        "bg-orange-300 flex-col inline-flex items-center min-w-16 p-1 rounded text-orange-900 md:flex-row md:gap-1",
+        "bg-orange-300/10 flex-col inline-flex items-center min-w-16 p-1 rounded text-orange-300 md:flex-row md:gap-1",
         media && "md:bg-transparent md:text-orange-400 md:p-0",
         { "p-2": item.Icon }
       )}

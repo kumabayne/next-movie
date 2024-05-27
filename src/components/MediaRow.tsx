@@ -34,7 +34,7 @@ export default async function MediaRow({
 
   return (
     <Container className="mb-6">
-      <h2 className="font-semibold mb-2 text-zinc-100 md:text-2xl md:font-bold">
+      <h2 className="font-semibold mb-2 text-zinc-100 text-lg md:text-2xl md:font-bold">
         {heading}
       </h2>
       <Swiper
@@ -51,7 +51,7 @@ export default async function MediaRow({
       >
         {data.results.map((item: Movie | Person | TVShow) => (
           // @ts-ignore
-          <swiper-slide class="MovieSlide" key={item.id} lazy="true">
+          <swiper-slide class="MediaSlide" key={item.id} lazy="true">
             <MediaCard key={item.id} item={item} />
           </swiper-slide>
         ))}

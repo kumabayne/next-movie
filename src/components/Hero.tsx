@@ -1,6 +1,7 @@
 import HeroCard from "./HeroCard";
 import Swiper from "./Swiper";
 import { Movie } from "../types/movie";
+import Container from "./Container";
 
 async function getData(category: string) {
   const url = `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`;
@@ -30,10 +31,7 @@ export default async function Hero({
   const data = await getData(category);
 
   return (
-    <div className="mb-4 relative px-4 md:px-0">
-      <h1 className="font-semibold mb-2 text-xl text-zinc-100 md:hidden">
-        {title}
-      </h1>
+    <div className="mb-6 relative md:px-0">
       <Swiper
         params={{
           autoplay: {
@@ -52,6 +50,11 @@ export default async function Hero({
           </swiper-slide>
         ))}
       </Swiper>
+      <Container>
+        <h1 className="font-bold mb-2 text-2xl text-zinc-100 md:hidden">
+          {title}
+        </h1>
+      </Container>
     </div>
   );
 }
