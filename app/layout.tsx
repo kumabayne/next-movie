@@ -4,6 +4,7 @@ import Navigation from "@/src/components/Navigation";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import MobileNav from "@/src/components/MobileNav";
+import Footer from "@/src/components/Footer";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
         <div className="bg-slate-950 border-t border-white/10 fixed bottom-0 z-50 left-0 right-0">
           <MobileNav />
         </div>
+        <Footer />
       </body>
     </html>
   );
