@@ -1,5 +1,5 @@
-import { FaFacebook, FaInstagram, FaXTwitter } from "react-icons/fa6";
-import { ExternalIds } from "../types/movie";
+import { FaInstagram, FaFacebookF, FaXTwitter } from "react-icons/fa6";
+import { ExternalIds } from "../types/shared";
 import Link from "next/link";
 import { HomeIcon } from "@heroicons/react/24/outline";
 
@@ -13,7 +13,7 @@ export default function ExternalLinks({
   const socialLinks = [
     {
       id: externalIds.facebook_id,
-      icon: FaFacebook,
+      icon: FaFacebookF,
       href: `https://facebook.com/${externalIds.facebook_id}`,
       name: "facebook",
     },
@@ -32,32 +32,32 @@ export default function ExternalLinks({
   ];
 
   return (
-    <div className="flex gap-2 mb-4 text-indigo-600">
+    <div className="flex gap-2 text-white backdrop-blur rounded-s-sm">
+      {homepage && (
+        <Link
+          className="duration-300 ease-in-out transition-colors hover:text-gray-400"
+          data-testid="homepage"
+          href={homepage}
+          target="_blank"
+        >
+          <HomeIcon className="h-6 w-6" />
+        </Link>
+      )}
       {socialLinks.map((link, idx) => {
         if (link.id) {
           return (
             <Link
-              className="bg-zinc-800 duration-300 ease-in-out p-1.5 rounded transition-colors hover:bg-zinc-700"
+              className="duration-300 ease-in-out transition-colors hover:text-gray-400"
               data-testid={link.name}
               key={idx}
               href={link.href}
               target="_blank"
             >
-              <link.icon className="h-5 w-5" />
+              <link.icon className="h-6 w-6" />
             </Link>
           );
         }
       })}
-      {homepage && (
-        <Link
-          className="bg-zinc-800 duration-300 ease-in-out p-1.5 rounded transition-colors hover:bg-zinc-700"
-          data-testid="homepage"
-          href={homepage}
-          target="_blank"
-        >
-          <HomeIcon className="h-5 w-5" />
-        </Link>
-      )}
     </div>
   );
 }

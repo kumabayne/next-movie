@@ -12,7 +12,7 @@ export default async function Home() {
     <>
       <Hero category="now_playing" title="Now Playing" />
       <Container className="mb-6">
-        <GenreRow genres={movieGenres.genres} title="Genres" />
+        <GenreRow genres={movieGenres.genres} title="Genres" media={false} />
       </Container>
       <MediaRow query="trending/movie/day" heading="Trending Movies" />
       <MediaRow query="trending/tv/day" heading="Trending TV Shows" />

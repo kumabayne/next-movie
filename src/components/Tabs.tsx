@@ -6,7 +6,12 @@ import clsx from "clsx";
 import { Image as ImageType, Video } from "../types/media";
 import Image from "next/image";
 import { configuration } from "../utils/data";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  FilmIcon,
+  PhotoIcon,
+} from "@heroicons/react/24/outline";
 
 function isImage(media: ImageType | Video): media is ImageType {
   return (media as ImageType).aspect_ratio !== undefined;
@@ -67,23 +72,33 @@ export default function Tabs({
   }, [currentIndex, selectedIndex]);
 
   return (
-    <div className="w-full max-w-md sm:px-0">
+    <div className="w-full sm:px-0">
       <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
-        <Tab.List className="flex space-x-1 rounded-xl bg-zinc-800 p-1">
+        <Tab.List className="flex space-x-1 rounded-xl border p-1 max-w-sm">
           {Object.keys(categories).map((category) => (
             <Tab
               key={category}
               className={({ selected }) =>
                 clsx(
                   "w-full rounded-lg py-2.5 text-sm font-medium leading-5",
-                  "ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
+                  "ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 flex justify-center",
                   selected
-                    ? "bg-zinc-700 text-white shadow"
+                    ? "bg-white text-black shadow"
                     : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
                 )
               }
             >
-              {category}
+              {category === "Videos" ? (
+                <div className="flex gap-1 items-center">
+                  <FilmIcon className="w-6 h-6" />
+                  <span>{category}</span>
+                </div>
+              ) : (
+                <div className="flex gap-1 items-center">
+                  <PhotoIcon className="w-6 h-6" />
+                  <span>{category}</span>
+                </div>
+              )}
             </Tab>
           ))}
         </Tab.List>
@@ -92,33 +107,39 @@ export default function Tabs({
             <Tab.Panel
               key={idx}
               className={clsx(
-                "rounded bg-zinc-800 p-3",
+                "rounded border p-3",
                 "ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
               )}
             >
-              {"file_path" in data[currentIndex[idx]] &&
-              "width" in data[currentIndex[idx]] &&
-              "height" in data[currentIndex[idx]] ? (
-                <Image
-                  className="aspect-video rounded"
-                  src={`${configuration.images.secure_base_url}${
-                    configuration.images.backdrop_sizes[1]
-                  }${data[currentIndex[idx]].file_path}`}
-                  width={data[currentIndex[idx]].width}
-                  height={data[currentIndex[idx]].height}
-                  alt=""
-                />
+              {data.length ? (
+                "file_path" in data[currentIndex[idx]] &&
+                "width" in data[currentIndex[idx]] &&
+                "height" in data[currentIndex[idx]] ? (
+                  <Image
+                    className="aspect-video rounded"
+                    src={`${configuration.images.secure_base_url}${
+                      configuration.images.backdrop_sizes[1]
+                    }${data[currentIndex[idx]].file_path}`}
+                    width={data[currentIndex[idx]].width}
+                    height={data[currentIndex[idx]].height}
+                    alt=""
+                  />
+                ) : (
+                  <iframe
+                    className="aspect-video h-full rounded w-full"
+                    src={`https://www.youtube.com/embed/${
+                      data[currentIndex[idx]].key
+                    }`}
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  ></iframe>
+                )
               ) : (
-                <iframe
-                  className="aspect-video h-full rounded w-full"
-                  src={`https://www.youtube.com/embed/${
-                    data[currentIndex[idx]].key
-                  }`}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
+                <div className="text-center">
+                  No {idx === 0 ? "Videos" : "Backdrops"} to show.
+                </div>
               )}
             </Tab.Panel>
           ))}

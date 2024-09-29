@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Reviews } from "../types/reviews";
+import { Reviews as ReviewsType } from "../types/reviews";
 import Review from "./Review";
 import { useParams } from "next/navigation";
 
@@ -10,7 +10,7 @@ export default function Reviews({
   data,
 }: {
   className?: string;
-  data: Reviews;
+  data: ReviewsType;
 }) {
   const [page, setPage] = useState(1);
   const [reviews, setReviews] = useState(data.results);

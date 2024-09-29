@@ -51,9 +51,9 @@ export default function SearchResult({
           <p className="font-semibold text-xs text-zinc-400">
             {"release_date" in item
               ? formatDate(item.release_date)
-              : "first_air_date" in item
+              : "first_air_date" in item && item.first_air_date !== undefined
               ? formatDate(item.first_air_date)
-              : item.known_for_department}
+              : "known_for_department" in item && item.known_for_department}
           </p>
         </div>
         <p

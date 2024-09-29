@@ -34,7 +34,9 @@ export default async function MediaRow({
 
   return (
     <Container className="mb-6">
-      <h2 className="font-semibold mb-2 text-zinc-100">{heading}</h2>
+      <h2 className="font-semibold mb-2 text-zinc-100 text-lg md:text-2xl md:font-bold">
+        {heading}
+      </h2>
       <Swiper
         params={{
           injectStyles: [
@@ -45,11 +47,11 @@ export default async function MediaRow({
             `,
           ],
           slidesPerView: "auto",
-          spaceBetween: 8,
         }}
       >
         {data.results.map((item: Movie | Person | TVShow) => (
-          <swiper-slide key={item.id} lazy="true" style={{ width: "80px" }}>
+          // @ts-ignore
+          <swiper-slide class="MediaSlide" key={item.id} lazy="true">
             <MediaCard key={item.id} item={item} />
           </swiper-slide>
         ))}

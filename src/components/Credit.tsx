@@ -8,13 +8,13 @@ import Link from "next/link";
 
 export default function Credit({ credit }: { credit: Movie | TVShow }) {
   const year = (
-    "release_date" in credit ? credit.release_date : credit.first_air_date
+    "release_date" in credit ? credit.release_date : credit.first_air_date || ""
   ).substring(0, 4);
 
   return (
     <Link
       href={`/${credit.media_type}/${credit.id}`}
-      className="bg-zinc-800 gap-2 grid grid-cols-credits items-center mb-2 p-2 rounded"
+      className="border gap-2 grid grid-cols-credits items-center mb-2 p-2 rounded"
     >
       {credit.poster_path ? (
         <Image

@@ -27,7 +27,7 @@ export default function Review({ review }: { review: ReviewType }) {
   }, [reviewRef]);
 
   return (
-    <div className="bg-zinc-800 p-4 relative rounded">
+    <div className="border p-4 relative rounded">
       <div
         className={clsx(
           "flex gap-2 justify-between items-center mb-2 relative",
@@ -85,7 +85,7 @@ export default function Review({ review }: { review: ReviewType }) {
       </div>
       {!isExpanded && isClamped && (
         <button
-          className="absolute bg-gradient-to-t from-zinc-800 via-zinc-800 via-90% to-transparent bottom-0 duration-300 ease-in-out flex font-semibold justify-center left-0 px-2 py-1 right-0 rounded-b text-center text-xs text-white transition-colors w-full hover:bg-white/20"
+          className="absolute bg-gradient-to-t from-slate-950 via-slate-950 via-90% to-transparent bottom-0 duration-300 ease-in-out flex font-semibold justify-center left-0 px-2 py-1 right-0 rounded-b text-center text-xs text-white transition-colors w-full hover:bg-white/20"
           onClick={() => setIsExpanded(true)}
           type="button"
         >

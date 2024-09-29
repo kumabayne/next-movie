@@ -11,7 +11,7 @@ export default function Keywords({
 }) {
   return (
     <div className={clsx(className && className)}>
-      <h2 className="font-semibold mb-2 text-zinc-100">Keywords</h2>
+      <h2 className="font-semibold mb-2 text-white text-lg">Keywords</h2>
       <div className="flex flex-wrap gap-2">
         {keywords.map((keyword) => (
           <KeywordCard key={keyword.id} keyword={keyword} />
