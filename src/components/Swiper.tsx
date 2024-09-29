@@ -28,7 +28,6 @@ type SwiperProps = {
 register();
 
 export default function Swiper({ children, params = {} }: SwiperProps) {
-  const test = localStorage.getItem("random") || "other";
   const swiperElRef = useRef<SwiperContainer>(null);
 
   useEffect(() => {
