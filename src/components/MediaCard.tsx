@@ -10,7 +10,10 @@ import clsx from "clsx";
 
 export default function MediaCard({ item }: { item: Movie | Person | TVShow }) {
   return (
-    <Link className="relative block" href={`/${item.media_type}/${item.id}`}>
+    <Link
+      className="relative block w-24 md:w-32"
+      href={`/${item.media_type}/${item.id}`}
+    >
       <Image
         className="rounded-sm md:rounded-md"
         src={

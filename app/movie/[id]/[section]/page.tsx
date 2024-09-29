@@ -31,16 +31,18 @@ export default async function MoviePage({
   const data: ReviewsType = await getData(id);
 
   return (
-    <Container className="md:mt-2">
-      <Link
-        className="flex gap-2 items-center mb-2 text-sm text-zinc-400"
-        href={`/movie/${id}`}
-      >
-        <ArrowLongLeftIcon className="h-4 w-4" />
-        Back to movie
-      </Link>
-      <h1 className="font-semibold mb-2 text-xl text-zinc-100">Reviews</h1>
-      <Reviews data={data} />
-    </Container>
+    <main className="pt-16 lg:pt-6">
+      <Container>
+        <Link
+          className="flex gap-2 items-center mb-2 text-sm text-zinc-400"
+          href={`/movie/${id}`}
+        >
+          <ArrowLongLeftIcon className="h-4 w-4" />
+          Back to movie
+        </Link>
+        <h1 className="font-semibold mb-2 text-xl text-zinc-100">Reviews</h1>
+        <Reviews data={data} />
+      </Container>
+    </main>
   );
 }

@@ -76,6 +76,12 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      gridTemplateColumns: {
+        credits: "auto 1fr auto",
+        person: "67px 1fr 24px",
+        profile: "88px 1fr",
+        search: "67px 1fr",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

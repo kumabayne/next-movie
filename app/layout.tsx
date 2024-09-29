@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
-import Navigation from "@/src/components/Navigation";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import MobileNav from "@/src/components/MobileNav";
 import Footer from "@/src/components/Footer";
+import Script from "next/script";
+import { ThemeProvider } from "@/components/theme-provider";
+import Link from "next/link";
+import Logo from "@/src/components/Logo";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -22,19 +25,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen font-sans antialiased bg-slate-950 mb-[58px]",
+          "min-h-screen font-sans antialiased bg-slate-950 mb-[58px] lg:mb-0 relative",
           outfit.variable
         )}
       >
-        <Navigation />
-        {children}
-        <div className="bg-slate-950 border-t border-white/10 fixed bottom-0 z-50 left-0 right-0">
-          <MobileNav />
-        </div>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="absolute top-4 left-4 z-10 md:top-6 md:left-6 lg:hidden">
+            <Logo />
+          </div>
+          <div className="lg:grid lg:grid-cols-[240px_auto]">
+            <div className="bg-slate-950 border-t border-white/10 fixed bottom-0 z-50 left-0 right-0 lg:top-0 lg:border-r lg:sticky lg:left-auto lg:right-auto lg:bottom-auto lg:max-h-screen lg:p-6">
+              <div className="hidden lg:block">
+                <Logo />
+              </div>
+              <MobileNav />
+            </div>
+            <div className="lg:max-w-[calc(100vw-240px)]">{children}</div>
+            <div className="col-start-2 col-end-3">
+              <Footer />
+            </div>
+          </div>
+        </ThemeProvider>
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2092024278385736"
+          crossOrigin="anonymous"
+          async
+        ></Script>
       </body>
     </html>
   );

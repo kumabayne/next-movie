@@ -25,7 +25,7 @@ export default function Modal({
         <Dialog
           as="div"
           data-testid="modal"
-          className="relative z-10"
+          className="relative z-50"
           onClose={closeModal}
         >
           <Transition.Child

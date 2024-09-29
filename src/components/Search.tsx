@@ -10,7 +10,7 @@ export default function Search() {
 
   return (
     <form
-      className="relative w-full max-w-72"
+      className="relative w-full flex rounded-full border items-center px-3 gap-1 py-1 max-w-xs"
       onSubmit={(e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -18,9 +18,10 @@ export default function Search() {
         setValue("");
       }}
     >
+      <MagnifyingGlassIcon className="h-4 w-4" />
       <input
         aria-label="search"
-        className="bg-zinc-100/10 pl-2.5 pr-8 py-1 rounded-full text-zinc-100 w-full"
+        className="text-zinc-100 w-full bg-transparent p-1 text-sm"
         id="search"
         name="search"
         placeholder="search..."
@@ -28,13 +29,6 @@ export default function Search() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button
-        className="absolute bg-white rounded-full p-1.5 m-0.5 right-0 text-zinc-800"
-        type="submit"
-      >
-        <div className="sr-only">Search</div>
-        <MagnifyingGlassIcon className="h-4 w-4" />
-      </button>
     </form>
   );
 }

@@ -31,7 +31,10 @@ export default async function Hero({
   const data = await getData(category);
 
   return (
-    <div className="mb-6 relative md:px-0">
+    <div className="mb-6 relative md:px-0 after:via-transparent after:z-40">
+      <h1 className="font-bold mb-2 text-xs uppercase px-2 py-1 rounded text-black absolute top-4 right-4 z-40 bg-white md:top-6 md:right-6">
+        {title}
+      </h1>
       <Swiper
         params={{
           autoplay: {
@@ -50,11 +53,6 @@ export default async function Hero({
           </swiper-slide>
         ))}
       </Swiper>
-      <Container>
-        <h1 className="font-bold mb-2 text-2xl text-zinc-100 md:hidden">
-          {title}
-        </h1>
-      </Container>
     </div>
   );
 }

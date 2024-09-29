@@ -76,6 +76,46 @@
 }
 
 .MediaSlide {
-  width: 160px;
-  margin-right: 16px;
+  width: 96px;
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .MediaSlide {
+    width: 128px;
+  }
+}
+
+.MediaSlide:last-child {
+  margin-right: 0;
+}
+
+.RecommendationSlide {
+  width: 96px;
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .RecommendationSlide {
+    width: 128px;
+  }
+}
+
+.RecommendationSlide:last-child {
+  margin-right: 0;
+}
+
+.CastSlide {
+  width: 80px;
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 1024px) {
+  .CastSlide {
+    width: 120px;
+  }
+}
+
+.CastSlide:last-child {
+  margin-right: 0;
 }

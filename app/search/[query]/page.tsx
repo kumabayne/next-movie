@@ -34,12 +34,14 @@ export default async function PersonPage({
   const data: { results: Movie[] } = await getData(query);
 
   return (
-    <Container>
-      <div className="flex flex-col gap-2">
-        {data.results.map((item: Movie) => (
-          <SearchResult key={item.id} item={item} />
-        ))}
-      </div>
-    </Container>
+    <div className="py-4">
+      <Container>
+        <div className="flex flex-col gap-2">
+          {data.results.map((item: Movie) => (
+            <SearchResult key={item.id} item={item} />
+          ))}
+        </div>
+      </Container>
+    </div>
   );
 }

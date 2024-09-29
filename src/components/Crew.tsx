@@ -1,9 +1,9 @@
 "use client";
 
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useMemo } from "react";
 import { Crew as CrewType } from "../types/people";
-import Modal from "./Modal";
 import Person from "./Person";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 export default function Crew({
   className,
@@ -22,15 +22,16 @@ export default function Crew({
   crew: CrewType[];
   mediaType?: string;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
   const departments: { [key: string]: number } = {};
   const sortedCrew = crew
     .slice()
     .sort((a, b) => {
       if (a.job && b.job) {
         return a.job.localeCompare(b.job);
-      } else if ("jobs" in a && "jobs" in b) {
+      } else if ("jobs" in a && "jobs" in b && a.jobs && b.jobs) {
         return a.jobs[0].job.localeCompare(b.jobs[0].job);
+      } else {
+        return 0;
       }
     })
     .sort((a, b) => a.department.localeCompare(b.department));
@@ -65,8 +66,10 @@ export default function Crew({
       .sort((a, b) => {
         if (a.job && b.job) {
           return a.job.localeCompare(b.job);
-        } else if ("jobs" in a && "jobs" in b) {
+        } else if ("jobs" in a && "jobs" in b && a.jobs && b.jobs) {
           return a.jobs[0].job.localeCompare(b.jobs[0].job);
+        } else {
+          return 0;
         }
       })
       .sort((a, b) => a.department.localeCompare(b.department));
@@ -116,60 +119,86 @@ export default function Crew({
   return (
     <div className={className}>
       <div className="flex gap-2 items-center justify-between mb-2">
-        <h2 className="font-semibold text-zinc-100">Crew</h2>
-        <button
-          className="text-pink-500 text-sm"
-          onClick={() => setIsOpen(true)}
-          type="button"
-        >
-          See All
-        </button>
+        <h2 className="font-semibold text-white text-lg">Crew</h2>
+        <Dialog>
+          <DialogTrigger className="text-pink-500 text-sm">
+            See All
+          </DialogTrigger>
+          <DialogContent className="max-w-[90%]">
+            <div className="max-h-96 overflow-scroll mt-4 pr-4 grid gap-2 md:grid-cols-2 md:gap-4 lg:max-h-[600px] xl:grid-cols-3 2xl:grid-cols-4">
+              {departmentReduced.map((item: CrewType, idx, dept) => {
+                if (item.department in departments) {
+                  if (idx === 1) {
+                    return (
+                      <Fragment key={`${item.id}-${idx}`}>
+                        <div className="border p-2 rounded">
+                          <Person grid={true} person={dept[0]} />
+                        </div>
+                        <div className="border p-2 rounded">
+                          <Person grid={true} person={item} />
+                        </div>
+                      </Fragment>
+                    );
+                  }
+
+                  return (
+                    <div
+                      key={`${item.id}-${idx}`}
+                      className="border p-2 rounded"
+                    >
+                      <Person grid={true} person={item} />
+                    </div>
+                  );
+                } else {
+                  departments[item.department] = 1;
+                  if (dept[1].department !== item.department) {
+                    return (
+                      <Fragment key={`${item.id}-${idx}`}>
+                        <h3 className="font-semibold text-sm text-zinc-100 first-of-type:mt-0 col-span-full lg:text-lg">
+                          {item.department}
+                        </h3>
+                        <div className="border p-2 rounded">
+                          <Person grid={true} person={item} />
+                        </div>
+                      </Fragment>
+                    );
+                  }
+                  return (
+                    <h3
+                      key={`${item.id}-${idx}`}
+                      className="font-semibold mt-4 text-sm text-zinc-100 first-of-type:mt-0 col-span-full lg:text-lg"
+                    >
+                      {item.department}
+                    </h3>
+                  );
+                }
+              })}
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
       {directorsAndWriters.length > 0 &&
         directorsAndWriters.map((person) => (
           <div
             key={person.id}
-            className="border-b border-zinc-600 flex gap-2 justify-between py-2 last:border-none"
+            className="border-b flex gap-2 justify-between py-2 last:border-none"
           >
             <p className="text-sm text-zinc-200">{person.job}</p>
             <p className="text-sm text-zinc-400">{person.name}</p>
           </div>
         ))}
       {mediaType === "tvshow" &&
+        createdBy &&
         createdBy.length > 0 &&
         createdBy.map((person) => (
           <div
             key={person.id}
-            className="border-b border-zinc-600 flex gap-2 justify-between py-2 last:border-none"
+            className="border-b flex gap-2 justify-between py-2 last:border-none"
           >
             <p className="text-sm text-zinc-200">Creator</p>
             <p className="text-sm text-zinc-400">{person.name}</p>
           </div>
         ))}
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-        {departmentReduced.map((item: CrewType, idx) => {
-          if (item.department in departments) {
-            return (
-              <div key={`${item.id}-${idx}`}>
-                <Person grid={true} person={item} />
-              </div>
-            );
-          } else {
-            departments[item.department] = 1;
-
-            return (
-              <Fragment key={`${item.id}-${idx}`}>
-                <h3 className="font-semibold mb-1 mt-4 text-sm text-zinc-100 first-of-type:mt-0">
-                  {item.department}
-                </h3>
-                <div>
-                  <Person grid={true} person={item} />
-                </div>
-              </Fragment>
-            );
-          }
-        })}
-      </Modal>
     </div>
   );
 }
