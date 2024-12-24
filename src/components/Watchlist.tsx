@@ -1,6 +1,6 @@
 "use client";
 
-import { BookmarkIcon } from "@heroicons/react/24/outline";
+import { IconBookmark } from "@tabler/icons-react";
 import { SyntheticEvent } from "react";
 
 export default function Watchlist() {
@@ -11,11 +11,11 @@ export default function Watchlist() {
 
   return (
     <button
-      className="text-white text-sm flex gap-1 items-center"
+      className="text-white text-sm flex gap-1 items-center font-medium"
       onClick={handleClick}
       type="button"
     >
-      <BookmarkIcon className="w-5 h-5 md:h-6 md:w-6" /> Watch Later
+      <IconBookmark className="w-6 h-6" /> Watch Later
     </button>
   );
 }

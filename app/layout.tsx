@@ -6,12 +6,12 @@ import MobileNav from "@/src/components/MobileNav";
 import Footer from "@/src/components/Footer";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
-import Link from "next/link";
 import Logo from "@/src/components/Logo";
 
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="absolute top-4 left-4 z-10 md:top-6 md:left-6 lg:hidden">
+          <div className="absolute top-2 left-1 z-10 md:top-6 md:left-4 lg:hidden">
             <Logo />
           </div>
           <div className="lg:grid lg:grid-cols-[240px_auto]">

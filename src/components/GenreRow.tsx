@@ -14,7 +14,7 @@ export default function GenreRow({
   return (
     <>
       {title && (
-        <h2 className="font-semibold mb-2 text-zinc-100 text-lg md:text-2xl md:font-bold">
+        <h2 className="font-semibold mb-1 text-zinc-100 md:text-2xl md:font-bold">
           {title}
         </h2>
       )}
