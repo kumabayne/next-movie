@@ -32,7 +32,7 @@ export default async function Hero({
 
   return (
     <div className="mb-6 relative md:px-0 after:via-transparent after:z-40">
-      <h1 className="font-bold mb-2 text-xs uppercase px-2 py-1 rounded text-black absolute top-4 right-4 z-40 bg-white md:top-6 md:right-6">
+      <h1 className="font-bold mb-2 text-xs uppercase px-2 py-1 rounded text-black absolute top-2 right-1 z-40 bg-white md:top-6 md:right-4 lg:right-6">
         {title}
       </h1>
       <Swiper

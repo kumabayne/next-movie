@@ -1,6 +1,6 @@
 "use client";
 
-import { HeartIcon } from "@heroicons/react/24/outline";
+import { IconHeart } from "@tabler/icons-react";
 import { SyntheticEvent } from "react";
 
 export default function Favorite() {
@@ -11,11 +11,11 @@ export default function Favorite() {
 
   return (
     <button
-      className="flex gap-1 items-center text-sm text-white"
+      className="flex gap-1 items-center text-sm text-white font-medium"
       onClick={handleClick}
       type="button"
     >
-      <HeartIcon className="w-5 h-5 md:h-6 md:w-6" />
+      <IconHeart className="h-6 w-6" />
       Favorite
     </button>
   );

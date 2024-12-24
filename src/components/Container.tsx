@@ -11,7 +11,10 @@ export default function Container({
   return (
     <div
       data-testid="container"
-      className={clsx("container mx-auto px-4 md:px-6", className && className)}
+      className={clsx(
+        "container mx-auto px-1 md:px-4 lg:px-6",
+        className && className
+      )}
     >
       {children}
     </div>
