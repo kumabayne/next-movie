@@ -1,8 +1,8 @@
 "use client";
 
 import { Fragment, useMemo } from "react";
-import { Crew as CrewType } from "../types/people";
-import Person from "./Person";
+import { Crew as CrewType } from "../../types/people";
+import Person from "../../components/person";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 export default function Crew({
@@ -58,7 +58,7 @@ export default function Crew({
           [`${current.id}-${current.department}`]: current,
         };
       },
-      {}
+      {},
     );
 
     const squashedCrew: CrewType[] | [] = Object.values(reducedCrew);
@@ -84,7 +84,7 @@ export default function Crew({
           person.job === "Director" ||
           (person.department === "Writing" &&
             person.job !== "Story Supervisor" &&
-            person.job !== "Storyboard")
+            person.job !== "Storyboard"),
       );
       const reducedCrew = filteredCrew.reduce(
         (prev: { [key: string]: CrewType }, current) => {
@@ -102,7 +102,7 @@ export default function Crew({
             [current.id]: current,
           };
         },
-        {}
+        {},
       );
 
       const directorsAndWriters: CrewType[] | [] = Object.values(reducedCrew);
@@ -118,23 +118,23 @@ export default function Crew({
 
   return (
     <div className={className}>
-      <div className="flex gap-2 items-center justify-between mb-2">
-        <h2 className="font-semibold text-white text-lg">Crew</h2>
+      <div className="mb-2 flex items-center justify-between gap-2">
+        <h2 className="text-lg font-semibold text-white">Crew</h2>
         <Dialog>
-          <DialogTrigger className="text-pink-500 text-sm">
+          <DialogTrigger className="text-sm text-pink-500">
             See All
           </DialogTrigger>
           <DialogContent className="max-w-[90%]">
-            <div className="max-h-96 overflow-scroll mt-4 pr-4 grid gap-2 md:grid-cols-2 md:gap-4 lg:max-h-[600px] xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="mt-4 grid max-h-96 gap-2 overflow-scroll pr-4 md:grid-cols-2 md:gap-4 lg:max-h-[600px] xl:grid-cols-3 2xl:grid-cols-4">
               {departmentReduced.map((item: CrewType, idx, dept) => {
                 if (item.department in departments) {
                   if (idx === 1) {
                     return (
                       <Fragment key={`${item.id}-${idx}`}>
-                        <div className="border p-2 rounded">
+                        <div className="rounded border p-2">
                           <Person grid={true} person={dept[0]} />
                         </div>
-                        <div className="border p-2 rounded">
+                        <div className="rounded border p-2">
                           <Person grid={true} person={item} />
                         </div>
                       </Fragment>
@@ -144,7 +144,7 @@ export default function Crew({
                   return (
                     <div
                       key={`${item.id}-${idx}`}
-                      className="border p-2 rounded"
+                      className="rounded border p-2"
                     >
                       <Person grid={true} person={item} />
                     </div>
@@ -154,10 +154,10 @@ export default function Crew({
                   if (dept[1].department !== item.department) {
                     return (
                       <Fragment key={`${item.id}-${idx}`}>
-                        <h3 className="font-semibold text-sm text-zinc-100 first-of-type:mt-0 col-span-full lg:text-lg">
+                        <h3 className="col-span-full text-sm font-semibold text-zinc-100 first-of-type:mt-0 lg:text-lg">
                           {item.department}
                         </h3>
-                        <div className="border p-2 rounded">
+                        <div className="rounded border p-2">
                           <Person grid={true} person={item} />
                         </div>
                       </Fragment>
@@ -166,7 +166,7 @@ export default function Crew({
                   return (
                     <h3
                       key={`${item.id}-${idx}`}
-                      className="font-semibold mt-4 text-sm text-zinc-100 first-of-type:mt-0 col-span-full lg:text-lg"
+                      className="col-span-full mt-4 text-sm font-semibold text-zinc-100 first-of-type:mt-0 lg:text-lg"
                     >
                       {item.department}
                     </h3>
@@ -181,7 +181,7 @@ export default function Crew({
         directorsAndWriters.map((person) => (
           <div
             key={person.id}
-            className="border-b flex gap-2 justify-between py-2 last:border-none"
+            className="flex justify-between gap-2 border-b py-2 last:border-none"
           >
             <p className="text-sm text-zinc-200">{person.job}</p>
             <p className="text-sm text-zinc-400">{person.name}</p>
@@ -193,7 +193,7 @@ export default function Crew({
         createdBy.map((person) => (
           <div
             key={person.id}
-            className="border-b flex gap-2 justify-between py-2 last:border-none"
+            className="flex justify-between gap-2 border-b py-2 last:border-none"
           >
             <p className="text-sm text-zinc-200">Creator</p>
             <p className="text-sm text-zinc-400">{person.name}</p>

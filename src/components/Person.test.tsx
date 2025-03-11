@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Person from "./Person";
+import Person from "../../components/person";
 import { slugify } from "../utils/helpers";
-import { Cast, Crew } from "../types/people";
+import { Cast, Crew } from "../../types/people";
 
 describe("Person", () => {
   const cast: Cast = {
@@ -38,7 +38,7 @@ describe("Person", () => {
     render(<Person person={cast} />);
     expect(screen.getByRole("link")).toHaveAttribute(
       "href",
-      `/person/${cast.id}/${slugify(cast.name)}`
+      `/person/${cast.id}/${slugify(cast.name)}`,
     );
   });
 
@@ -73,7 +73,7 @@ describe("Person", () => {
   it("renders the persons character if person is cast memeber", () => {
     render(<Person person={cast} />);
     expect(
-      screen.getByText(/Steve Rogers \/ Captain America/i)
+      screen.getByText(/Steve Rogers \/ Captain America/i),
     ).toBeInTheDocument();
   });
 

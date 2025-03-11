@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import KnownFor from "./KnownFor";
+import KnownFor from "../../components/known-for";
 import { movieCredit, tvshowCredit } from "../utils/test-data";
 
 describe("KnownFor", () => {

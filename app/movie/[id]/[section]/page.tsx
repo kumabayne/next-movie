@@ -1,7 +1,7 @@
-import Container from "@/src/components/Container";
+import Container from "@/components/container";
 import Reviews from "@/src/components/Reviews";
-import { Reviews as ReviewsType } from "@/src/types/reviews";
-import { ArrowLongLeftIcon } from "@heroicons/react/24/outline";
+import { Reviews as ReviewsType } from "@/types/reviews";
+import { IconChevronLeft } from "@tabler/icons-react";
 import Link from "next/link";
 
 async function getData(id: string) {
@@ -22,11 +22,10 @@ async function getData(id: string) {
   return res.json();
 }
 
-export default async function MoviePage({
-  params,
-}: {
-  params: { id: string; section: string };
+export default async function MoviePage(props: {
+  params: Promise<{ id: string; section: string }>;
 }) {
+  const params = await props.params;
   const id = params.id;
   const data: ReviewsType = await getData(id);
 
@@ -34,13 +33,13 @@ export default async function MoviePage({
     <main className="pt-16 lg:pt-6">
       <Container>
         <Link
-          className="flex gap-2 items-center mb-2 text-sm text-zinc-400"
+          className="mb-2 flex items-center gap-2 text-sm text-zinc-400"
           href={`/movie/${id}`}
         >
-          <ArrowLongLeftIcon className="h-4 w-4" />
+          <IconChevronLeft className="h-4 w-4" />
           Back to movie
         </Link>
-        <h1 className="font-semibold mb-2 text-xl text-zinc-100">Reviews</h1>
+        <h1 className="mb-2 text-xl font-semibold text-zinc-100">Reviews</h1>
         <Reviews data={data} />
       </Container>
     </main>

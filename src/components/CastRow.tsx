@@ -1,7 +1,7 @@
 "use client";
 
-import { Cast } from "../types/people";
-import Person from "./Person";
+import { Cast } from "../../types/people";
+import Person from "../../components/person";
 import Swiper from "./Swiper";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
@@ -14,16 +14,16 @@ export default function CastRow({
 }) {
   return (
     <div className={className}>
-      <div className="flex gap-2 items-center justify-between mb-2">
-        <h2 className="font-semibold text-white text-lg">Cast</h2>
+      <div className="mb-2 flex items-center justify-between gap-2">
+        <h2 className="text-lg font-semibold text-white">Cast</h2>
         <Dialog>
-          <DialogTrigger className="text-pink-500 text-sm">
+          <DialogTrigger className="text-sm text-pink-500">
             See All
           </DialogTrigger>
           <DialogContent className="max-w-[90%]">
-            <div className="max-h-96 overflow-scroll mt-4 pr-4 grid gap-2 lg:max-h-[600px] md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="mt-4 grid max-h-96 gap-2 overflow-scroll pr-4 md:grid-cols-2 md:gap-6 lg:max-h-[600px] xl:grid-cols-3 2xl:grid-cols-4">
               {cast.map((item: Cast) => (
-                <div key={item.id} className="border rounded p-2">
+                <div key={item.id} className="rounded border p-2">
                   <Person grid={true} person={item} />
                 </div>
               ))}

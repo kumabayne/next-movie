@@ -1,5 +1,5 @@
-import { Recommendations as RecommendationsType } from "../types/shared";
-import MediaCard from "./MediaCard";
+import { Recommendations as RecommendationsType } from "../../types/shared";
+import MediaCard from "../../components/media-card";
 import Swiper from "./Swiper";
 
 export default function Recommendations({
@@ -9,7 +9,7 @@ export default function Recommendations({
 }) {
   return (
     <div className="mb-4">
-      <h2 className="font-semibold mb-2 text-white text-lg">Recommendations</h2>
+      <h2 className="mb-2 text-lg font-semibold text-white">Recommendations</h2>
       <Swiper
         params={{
           injectStyles: [

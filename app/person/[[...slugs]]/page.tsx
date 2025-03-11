@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { configuration } from "@/src/utils/data";
-import Container from "@/src/components/Container";
-import { PersonDetails } from "@/src/types/people";
-import { calculateAge, formatDate } from "@/src/utils/helpers";
-import Rating from "@/src/components/Rating";
+import { configuration } from "@/utils/data";
+import Container from "@/components/container";
+import { PersonDetails } from "@/types/people";
+import { calculateAge, formatDate } from "@/utils/helpers";
+import Rating from "@/components/rating";
 import Credits from "@/src/components/Credits";
-import KnownFor from "@/src/components/KnownFor";
-import Bio from "@/src/components/Bio";
+import KnownFor from "@/components/known-for";
+import Bio from "@/components/bio";
 
 async function getData(id: string) {
   const url = `https://api.themoviedb.org/3/person/${id}?language=en-US&append_to_response=combined_credits`;
@@ -26,13 +26,12 @@ async function getData(id: string) {
   return res.json();
 }
 
-export default async function PersonPage({
-  params,
-}: {
-  params: {
+export default async function PersonPage(props: {
+  params: Promise<{
     slugs: string[];
-  };
+  }>;
 }) {
+  const params = await props.params;
   const id = params.slugs[0];
   const data: PersonDetails = await getData(id);
   const castCredits = data.combined_credits.cast.slice(0).sort((a, b) => {
@@ -50,7 +49,7 @@ export default async function PersonPage({
   return (
     <div className="pt-16 lg:pt-6">
       <Container>
-        <div className="gap-2 grid grid-cols-profile mb-4 md:grid-cols-[120px_1fr]">
+        <div className="mb-4 grid grid-cols-profile gap-2 md:grid-cols-[120px_1fr]">
           <div className="relative">
             <Image
               className="rounded"
@@ -59,13 +58,13 @@ export default async function PersonPage({
               width="1920"
               height="1080"
             />
-            <div className="absolute right-1 bottom-1">
+            <div className="absolute bottom-1 right-1">
               <Rating rating={Math.round(data.popularity)} fixed={0} />
             </div>
           </div>
           <div className="md:self-end">
             <div className="mb-2 md:mb-0">
-              <h1 className="font-semibold text-xl text-zinc-100">
+              <h1 className="text-xl font-semibold text-zinc-100">
                 {data.name}
               </h1>
               <p className="text-xs text-zinc-400 md:text-base">
@@ -88,7 +87,7 @@ export default async function PersonPage({
                   <span className="font-semibold md:font-normal">
                     {`${formatDate(data.deathday)} (${calculateAge(
                       data.birthday,
-                      data.deathday
+                      data.deathday,
                     )} years old)`}
                   </span>
                 </p>
@@ -107,7 +106,7 @@ export default async function PersonPage({
             </div>
           </div>
         </div>
-        <div className="hidden md:block mb-4">
+        <div className="mb-4 hidden md:block">
           <h2 className="col-span-full font-semibold text-zinc-100">Bio</h2>
           <p className="text-zinc-400">{data.biography}</p>
         </div>

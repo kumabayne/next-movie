@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Credit from "./Credit";
+import Credit from "../../components/credit";
 import { movieCredit, tvshowCredit } from "../utils/test-data";
 
 describe("Credit", () => {

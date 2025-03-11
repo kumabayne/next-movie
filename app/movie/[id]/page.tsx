@@ -1,21 +1,21 @@
-import Container from "@/src/components/Container";
-import { MovieDetails } from "@/src/types/movie";
+import Container from "@/components/container";
+import { MovieDetails } from "@/types/movie";
 import CastRow from "@/src/components/CastRow";
-import GenreRow from "@/src/components/GenreRow";
+import GenreRow from "@/components/genre-row";
 import Crew from "@/src/components/Crew";
-import MediaHero from "@/src/components/MediaHero";
-import Review from "@/src/components/Review";
+import MediaHero from "@/components/media-hero";
+import Review from "@/components/review";
 import Link from "next/link";
-import Media from "@/src/components/Media";
+import Media from "@/components/media";
 import ExternalLinks from "@/src/components/ExternalLinks";
-import Facts from "@/src/components/Facts";
+import Facts from "@/components/facts";
 import Keywords from "@/src/components/Keywords";
 import Recommendations from "@/src/components/Recommendations";
-import Rating from "@/src/components/Rating";
+import Rating from "@/components/rating";
 import Image from "next/image";
-import { configuration } from "@/src/utils/data";
-import Watchlist from "@/src/components/Watchlist";
-import Favorite from "@/src/components/Favorite";
+import { configuration } from "@/utils/data";
+import Watchlist from "@/components/watchlist";
+import Favorite from "@/components/favorite";
 
 async function getData(id: string) {
   const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=videos,external_ids,images,credits,keywords,release_dates,reviews,recommendations&include_image_language=en,null`;
@@ -35,11 +35,10 @@ async function getData(id: string) {
   return res.json();
 }
 
-export default async function MoviePage({
-  params,
-}: {
-  params: { id: string };
+export default async function MoviePage(props: {
+  params: Promise<{ id: string }>;
 }) {
+  const params = await props.params;
   const id = params.id;
   const data: MovieDetails = await getData(id);
 
@@ -49,7 +48,7 @@ export default async function MoviePage({
         <MediaHero data={data} />
       </div>
       <Container>
-        <div className="flex gap-2 mb-2 md:hidden">
+        <div className="mb-2 flex gap-2 md:hidden">
           <Watchlist />
           <Favorite />
         </div>
@@ -59,7 +58,7 @@ export default async function MoviePage({
         <div className="lg:grid lg:grid-cols-12 lg:gap-6">
           <div className="col-span-8">
             <div className="mb-4">
-              <h2 className="font-semibold text-white text-lg">Summary</h2>
+              <h2 className="text-lg font-semibold text-white">Summary</h2>
               <p className="text-white">{data.overview}</p>
             </div>
             <CastRow cast={data.credits.cast} className="mb-4" />
@@ -75,14 +74,14 @@ export default async function MoviePage({
                 <h2 className="font-semibold text-zinc-100">Reviews</h2>
               </div>
               {data.reviews.results.length === 0 && (
-                <p className="italic text-sm text-zinc-400">No Reviews yet.</p>
+                <p className="text-sm italic text-zinc-400">No Reviews yet.</p>
               )}
               {data.reviews.results.length > 0 && (
                 <>
                   <Review review={data.reviews.results[0]} />
-                  <div className="flex justify-end mt-2">
+                  <div className="mt-2 flex justify-end">
                     <Link
-                      className="text-pink-500 text-sm"
+                      className="text-sm text-pink-500"
                       href={`${id}/reviews`}
                     >
                       Read More Reviews

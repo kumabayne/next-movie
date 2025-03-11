@@ -1,12 +1,12 @@
-import Container from "@/src/components/Container";
-import { TVShowDetails } from "@/src/types/tv";
-import MediaHero from "@/src/components/MediaHero";
-import GenreRow from "@/src/components/GenreRow";
+import Container from "@/components/container";
+import { TVShowDetails } from "@/types/tv";
+import MediaHero from "@/components/media-hero";
+import GenreRow from "@/components/genre-row";
 import ExternalLinks from "@/src/components/ExternalLinks";
 import CastRow from "@/src/components/CastRow";
 import Crew from "@/src/components/Crew";
 import Recommendations from "@/src/components/Recommendations";
-import Facts from "@/src/components/Facts";
+import Facts from "@/components/facts";
 import Keywords from "@/src/components/Keywords";
 
 async function getData(id: string) {
@@ -27,11 +27,14 @@ async function getData(id: string) {
   return res.json();
 }
 
-export default async function TVPage({ params }: { params: { id: string } }) {
+export default async function TVPage(props: {
+  params: Promise<{ id: string }>;
+}) {
+  const params = await props.params;
   const id = params.id;
   const data: TVShowDetails = await getData(id);
   const rating = data.content_ratings.results.find(
-    (item) => item.iso_3166_1 === "US"
+    (item) => item.iso_3166_1 === "US",
   )?.rating;
   const year = data.first_air_date.slice(0, 4);
 
@@ -42,12 +45,12 @@ export default async function TVPage({ params }: { params: { id: string } }) {
       </div>
       <Container>
         <div className="mb-4">
-          <h1 className="font-semibold mb-2 text-xl text-zinc-100">
+          <h1 className="mb-2 text-xl font-semibold text-zinc-100">
             {data.name}
           </h1>
-          <div className="flex gap-2 items-center mb-2 text-sm text-zinc-400">
+          <div className="mb-2 flex items-center gap-2 text-sm text-zinc-400">
             {rating && (
-              <span className="bg-zinc-100 font-semibold inline-flex items-center justify-center px-1 rounded-sm text-zinc-800 text-xs">
+              <span className="inline-flex items-center justify-center rounded-sm bg-zinc-100 px-1 text-xs font-semibold text-zinc-800">
                 {rating}
               </span>
             )}
@@ -65,7 +68,7 @@ export default async function TVPage({ params }: { params: { id: string } }) {
           />
         </div>
         <div className="mb-4">
-          <h2 className="font-medium text-zinc-400 text-xs">Summary</h2>
+          <h2 className="text-xs font-medium text-zinc-400">Summary</h2>
           <p className="text-zinc-200">{data.overview}</p>
         </div>
         <CastRow cast={data.aggregate_credits.cast} className="mb-4" />

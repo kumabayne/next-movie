@@ -1,10 +1,10 @@
-import Container from "@/src/components/Container";
+import Container from "@/components/container";
 
 export default function PeoplePage() {
   return (
     <main className="min-h-screen py-6">
       <Container>
-        <h1 className="text-white font-bold text-2xl">People (Coming Soon)</h1>;
+        <h1 className="text-2xl font-bold text-white">People (Coming Soon)</h1>;
       </Container>
     </main>
   );

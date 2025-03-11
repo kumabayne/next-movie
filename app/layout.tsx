@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import MobileNav from "@/src/components/MobileNav";
 import Footer from "@/src/components/Footer";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
-import Logo from "@/src/components/Logo";
+import Logo from "@/components/logo";
+import Header from "@/components/header";
+import MobileNav from "@/components/mobile-nav";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -28,8 +29,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen font-sans antialiased bg-slate-950 mb-[58px] lg:mb-0 relative",
-          outfit.variable
+          "relative min-h-screen bg-background font-sans antialiased lg:mb-0",
+          outfit.variable,
         )}
       >
         <ThemeProvider
@@ -38,17 +39,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="absolute top-2 left-1 z-10 md:top-6 md:left-4 lg:hidden">
-            <Logo />
-          </div>
-          <div className="lg:grid lg:grid-cols-[240px_auto]">
-            <div className="bg-slate-950 border-t border-white/10 fixed bottom-0 z-50 left-0 right-0 lg:top-0 lg:border-r lg:sticky lg:left-auto lg:right-auto lg:bottom-auto lg:max-h-screen lg:p-6">
-              <div className="hidden lg:block">
-                <Logo />
-              </div>
-              <MobileNav />
-            </div>
-            <div className="lg:max-w-[calc(100vw-240px)]">{children}</div>
+          <Header />
+          <MobileNav />
+          <div>
+            {children}
             <div className="col-start-2 col-end-3">
               <Footer />
             </div>
