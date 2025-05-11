@@ -9,57 +9,70 @@ import Rating from "./rating";
 import Watchlist from "./watchlist";
 import Favorite from "./favorite";
 import Typography from "./typography";
+import { Badge } from "./ui/badge";
+import { formatDate } from "@/lib/utils";
 
 export default function HeroCard({ item }: { item: MovieType }) {
   return (
-    <div>
-      <Link
-        className="relative block lg:overflow-hidden lg:rounded-2xl"
-        href={`/movie/${item.id}`}
-      >
-        <div className="relative after:absolute after:inset-0 after:z-10 after:bg-gradient-to-t after:from-slate-950 after:to-transparent">
-          <Image
-            alt=""
-            className="object-cover"
-            data-testid="herocard-backdrop"
-            height="1080"
-            src={`${configuration.images.secure_base_url}${configuration.images.backdrop_sizes[3]}${item.backdrop_path}`}
-            width="1920"
-            priority
-          />
-          <Container className="absolute bottom-0 z-20 mb-2 md:mb-4 lg:mb-6">
-            <div className="grid grid-cols-[96px_auto] items-end gap-2 sm:grid-cols-[144px_auto] md:grid-cols-[160px_auto] md:gap-4 lg:gap-6 xl:grid-cols-[240px_auto]">
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-0 z-10 rounded-xl bg-gradient-to-bl from-black/40 via-black/0 to-black/0"></div>
-                <div className="absolute right-1.5 top-1.5 z-20">
-                  <Watchlist />
-                </div>
-                <Image
-                  alt={item.title}
-                  className="rounded-xl drop-shadow"
-                  height="384"
-                  src={`${configuration.images.secure_base_url}${configuration.images.poster_sizes[4]}${item.poster_path}`}
-                  width="256"
-                  priority
-                />
-              </div>
-              <div className="md:space-y-2">
-                <div className="flex gap-2 md:gap-4">
-                  <div>
-                    <Rating className="text-white" rating={item.vote_average} />
-                  </div>
-                  <div className="flex gap-2 md:gap-4">
-                    <Favorite />
-                  </div>
-                </div>
-                <Typography as="h1" className="leading-tight text-zinc-100">
-                  {item.title}
-                </Typography>
-              </div>
+    <Link className="relative block" href={`/movie/${item.id}`}>
+      <div className="relative after:absolute after:inset-0 after:bg-gradient-to-t after:from-black after:via-transparent after:to-black/70 xl:after:to-transparent">
+        <Image
+          alt={item.title}
+          className="lg:hidden"
+          data-testid="herocard-backdrop"
+          height="489"
+          src={`${configuration.images.secure_base_url}${configuration.images.backdrop_sizes[1]}${item.backdrop_path}`}
+          width="780"
+          priority
+        />
+        <Image
+          alt={item.title}
+          className="hidden lg:block xl:hidden"
+          data-testid="herocard-backdrop"
+          height="720"
+          src={`${configuration.images.secure_base_url}${configuration.images.backdrop_sizes[2]}${item.backdrop_path}`}
+          width="1280"
+          priority
+        />
+        <Image
+          alt={item.title}
+          className="hidden rounded-3xl xl:block"
+          data-testid="herocard-backdrop"
+          height="2160"
+          src={`${configuration.images.secure_base_url}${configuration.images.backdrop_sizes[3]}${item.backdrop_path}`}
+          width="3840"
+          priority
+        />
+      </div>
+      <Container className="absolute bottom-0">
+        <div className="space-y-2 md:space-y-3 lg:space-y-4">
+          <div className="md:space-y-1 lg:space-y-2">
+            <div>
+              <Badge
+                className="rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase leading-none tracking-widest text-black"
+                data-testid="hero-badge"
+              >
+                In Theaters
+              </Badge>
             </div>
-          </Container>
+            <div className="flex items-center gap-2">
+              <Rating rating={item.vote_average} />
+              <span>&middot;</span>
+              <p className="text-xs font-medium text-white md:text-sm lg:text-base">
+                {formatDate(item.release_date)}
+              </p>
+            </div>
+          </div>
+          <div className="md:space-y-1 lg:space-y-2">
+            <Typography as="h1" className="text-white">
+              {item.title}
+            </Typography>
+            <p className="line-clamp-2 text-sm md:line-clamp-none md:text-base lg:text-xl">
+              {item.overview}
+            </p>
+          </div>
         </div>
-      </Link>
-    </div>
+      </Container>
+    </Link>
   );
 }

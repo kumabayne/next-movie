@@ -25,9 +25,9 @@ export default function Favorite({ favorite = false }: { favorite?: boolean }) {
       type="button"
     >
       {isFavorite ? (
-        <IconHeartMinus className="h-4 w-4" data-testid="favorite-filled" />
+        <IconHeartMinus className="h-6 w-6" data-testid="favorite-filled" />
       ) : (
-        <IconHeartPlus className="h-4 w-4" data-testid="favorite-empty" />
+        <IconHeartPlus className="h-6 w-6" data-testid="favorite-empty" />
       )}
       <span className="sr-only">
         {isFavorite ? "Remove from favorites" : "Add to favorites"}

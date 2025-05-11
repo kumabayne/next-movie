@@ -16,27 +16,27 @@ export default function Facts({
   data: MovieDetails | TVShowDetails;
 }) {
   return (
-    <div className={clsx("gap-2 grid grid-cols-2", className && className)}>
+    <div className={clsx("grid grid-cols-2 gap-2", className && className)}>
       <div>
-        <p className="font-medium text-sm text-zinc-100">Status:</p>
-        <p className="text-sm text-zinc-400">{data.status}</p>
+        <p className="text-sm font-medium">Status:</p>
+        <p className="text-sm font-medium text-neutral-400">{data.status}</p>
       </div>
       <div>
-        <p className="font-medium text-sm text-zinc-100">Original Language:</p>
-        <p className="text-sm text-zinc-400">
+        <p className="text-sm font-medium">Original Language:</p>
+        <p className="text-sm font-medium text-neutral-400">
           {convertLanguageCodeToFullName(
             data.original_language,
-            data.spoken_languages
+            data.spoken_languages,
           )}
         </p>
       </div>
       {"budget" in data && (
         <div>
-          <p className="font-medium text-sm text-zinc-100">Budget:</p>
+          <p className="text-sm font-medium">Budget:</p>
           {data.status !== "Released" ? (
-            <p className="text-sm text-zinc-400">-</p>
+            <p className="text-sm font-medium text-neutral-400">-</p>
           ) : (
-            <p className="text-sm text-zinc-400">
+            <p className="text-sm font-medium text-neutral-400">
               {convertNumberToDollars(data.budget)}
             </p>
           )}
@@ -44,17 +44,17 @@ export default function Facts({
       )}
       {"type" in data && (
         <div>
-          <p className="font-medium text-sm text-zinc-100">Type:</p>
-          <p className="text-sm text-zinc-400">{data.type}</p>
+          <p className="text-sm font-medium">Type:</p>
+          <p className="text-sm font-medium text-neutral-400">{data.type}</p>
         </div>
       )}
       {"revenue" in data && (
         <div>
-          <p className="font-medium text-sm text-zinc-100">Revenue:</p>
+          <p className="text-sm font-medium">Revenue:</p>
           {data.status !== "Released" ? (
-            <p className="text-sm text-zinc-400">-</p>
+            <p className="text-sm font-medium text-neutral-400">-</p>
           ) : (
-            <p className="text-sm text-zinc-400">
+            <p className="text-sm font-medium text-neutral-400">
               {convertNumberToDollars(data.revenue)}
             </p>
           )}
@@ -62,8 +62,8 @@ export default function Facts({
       )}
       {"networks" in data && (
         <div>
-          <p className="font-medium text-sm text-zinc-100">Networks:</p>
-          <div className="flex gap-2 items-center">
+          <p className="text-sm font-medium">Networks:</p>
+          <div className="flex items-center gap-2">
             {data.networks.map((network) => (
               <Image
                 key={network.id}

@@ -33,7 +33,10 @@ export default function MediaCard({
       <div className="relative">
         <div className="absolute right-1.5 top-1.5 z-20 inline-flex flex-col gap-1">
           <button className="text-white" type="button">
-            <IconBookmarkPlus className="h-6 w-6 drop-shadow-sm" />
+            <IconBookmarkPlus
+              className="h-6 w-6 drop-shadow-sm xl:h-8 xl:w-8"
+              stroke="1.5"
+            />
           </button>
         </div>
         {src && (
@@ -41,7 +44,7 @@ export default function MediaCard({
             <div className="to-black/ pointer-events-none absolute inset-0 z-10 rounded-xl bg-gradient-to-bl from-black/40 via-black/0"></div>
             <Image
               alt={"title" in item ? item.title : item.name}
-              className="h-[216px] w-36 rounded-xl sm:h-60 sm:w-40 md:h-[264px] md:w-44"
+              className="h-[216px] w-36 rounded-xl sm:h-60 sm:w-40 md:h-[264px] md:w-44 lg:h-[288px] lg:w-48 xl:h-[312px] xl:w-52"
               height="240"
               loading="lazy"
               src={`${configuration.images.secure_base_url}${src}`}
@@ -50,7 +53,7 @@ export default function MediaCard({
           </div>
         )}
         {!src && (
-          <div className="relative flex h-[216px] w-36 flex-col items-center justify-center rounded-xl bg-black p-2 text-white sm:h-60 sm:w-40 md:h-[264px] md:w-44">
+          <div className="relative flex h-[216px] w-36 flex-col items-center justify-center rounded-xl bg-neutral-900 p-2 text-white sm:h-60 sm:w-40 md:h-[264px] md:w-44 lg:h-[288px] lg:w-48 xl:h-[312px] xl:w-52">
             {"gender" in item && (
               <IconUser
                 data-testid="mediacard-icon"

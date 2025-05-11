@@ -5,9 +5,11 @@ import { cn } from "@/lib/utils";
 import Footer from "@/src/components/Footer";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
-import Logo from "@/components/logo";
+import HamburgerMenu from "@/components/hamburger-menu";
+import { Snail, SnailIcon } from "lucide-react";
+import Link from "next/link";
+import Container from "@/components/container";
 import Header from "@/components/header";
-import MobileNav from "@/components/mobile-nav";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -29,7 +31,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "relative min-h-screen bg-background font-sans antialiased lg:mb-0",
+          "relative min-h-screen bg-background font-sans antialiased",
           outfit.variable,
         )}
       >
@@ -40,7 +42,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <MobileNav />
           <div>
             {children}
             <div className="col-start-2 col-end-3">

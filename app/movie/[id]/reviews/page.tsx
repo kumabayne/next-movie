@@ -22,8 +22,8 @@ async function getData(id: string) {
   return res.json();
 }
 
-export default async function MoviePage(props: {
-  params: Promise<{ id: string; section: string }>;
+export default async function MovieReviewsPage(props: {
+  params: Promise<{ id: string }>;
 }) {
   const params = await props.params;
   const id = params.id;

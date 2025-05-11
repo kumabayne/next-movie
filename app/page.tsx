@@ -1,6 +1,7 @@
 import MediaRow from "@/components/media-row";
 import GenreRow from "@/components/genre-row";
 import Hero from "@/components/hero";
+import Container from "@/components/container";
 
 async function getHero(category: string) {
   const res = await fetch(
@@ -53,11 +54,19 @@ export default async function Home() {
 
   return (
     <>
-      <Hero data={hero} category="Now Playing" />
+      <Hero data={hero} />
       {/* <GenreRow media={false} /> */}
-      <MediaRow data={movies} heading="Trending Movies" />
-      <MediaRow data={tvShows} heading="Trending TV Shows" />
-      <MediaRow data={people} heading="Trending People" />
+      <div className="space-y-4">
+        <Container>
+          <MediaRow data={movies} heading="Trending Movies" />
+        </Container>
+        <Container>
+          <MediaRow data={tvShows} heading="Trending TV Shows" />
+        </Container>
+        <Container>
+          <MediaRow data={people} heading="Trending People" />
+        </Container>
+      </div>
     </>
   );
 }

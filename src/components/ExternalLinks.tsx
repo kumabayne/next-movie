@@ -39,25 +39,25 @@ export default function ExternalLinks({
     <div className="flex gap-2 rounded-s-sm text-white backdrop-blur">
       {homepage && (
         <Link
-          className="transition-colors duration-300 ease-in-out hover:text-gray-400"
+          className="transition-colors duration-300 ease-in-out hover:text-neutral-400"
           data-testid="homepage"
           href={homepage}
           target="_blank"
         >
-          <IconHome className="h-6 w-6" />
+          <IconHome className="h-6 w-6" stroke="1.5" />
         </Link>
       )}
       {socialLinks.map((link, idx) => {
         if (link.id) {
           return (
             <Link
-              className="transition-colors duration-300 ease-in-out hover:text-gray-400"
+              className="transition-colors duration-300 ease-in-out hover:text-neutral-400"
               data-testid={link.name}
               key={idx}
               href={link.href}
               target="_blank"
             >
-              <link.icon className="h-6 w-6" />
+              <link.icon className="h-6 w-6" stroke="1" />
             </Link>
           );
         }

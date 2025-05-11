@@ -1,9 +1,10 @@
 "use client";
 
 import { Fragment, useMemo } from "react";
-import { Crew as CrewType } from "../../types/people";
+import { CrewType } from "../../types/people";
 import Person from "../../components/person";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import Typography from "@/components/typography";
 
 export default function Crew({
   className,
@@ -119,82 +120,78 @@ export default function Crew({
   return (
     <div className={className}>
       <div className="mb-2 flex items-center justify-between gap-2">
-        <h2 className="text-lg font-semibold text-white">Crew</h2>
+        <Typography as="h2">Crew</Typography>
         <Dialog>
-          <DialogTrigger className="text-sm text-pink-500">
+          <DialogTrigger className="text-sm font-medium text-primary">
             See All
           </DialogTrigger>
-          <DialogContent className="max-w-[90%]">
-            <div className="mt-4 grid max-h-96 gap-2 overflow-scroll pr-4 md:grid-cols-2 md:gap-4 lg:max-h-[600px] xl:grid-cols-3 2xl:grid-cols-4">
-              {departmentReduced.map((item: CrewType, idx, dept) => {
-                if (item.department in departments) {
-                  if (idx === 1) {
-                    return (
-                      <Fragment key={`${item.id}-${idx}`}>
-                        <div className="rounded border p-2">
-                          <Person grid={true} person={dept[0]} />
-                        </div>
-                        <div className="rounded border p-2">
-                          <Person grid={true} person={item} />
-                        </div>
-                      </Fragment>
-                    );
-                  }
+          <DialogContent className="crew-dialog max-w-[90%] p-6">
+            <div className="max-h-[80svh] overflow-scroll">
+              <div className="grid md:grid-cols-2 lg:max-h-[600px] xl:grid-cols-3 2xl:grid-cols-4">
+                {departmentReduced.map((item: CrewType, idx, dept) => {
+                  if (item.department in departments) {
+                    if (idx === 1) {
+                      return (
+                        <Fragment key={`${item.id}-${idx}`}>
+                          <div className="py-4">
+                            <Person grid={true} person={dept[0]} />
+                          </div>
+                          <div className="py-4">
+                            <Person grid={true} person={item} />
+                          </div>
+                        </Fragment>
+                      );
+                    }
 
-                  return (
-                    <div
-                      key={`${item.id}-${idx}`}
-                      className="rounded border p-2"
-                    >
-                      <Person grid={true} person={item} />
-                    </div>
-                  );
-                } else {
-                  departments[item.department] = 1;
-                  if (dept[1].department !== item.department) {
                     return (
-                      <Fragment key={`${item.id}-${idx}`}>
-                        <h3 className="col-span-full text-sm font-semibold text-zinc-100 first-of-type:mt-0 lg:text-lg">
-                          {item.department}
-                        </h3>
-                        <div className="rounded border p-2">
-                          <Person grid={true} person={item} />
-                        </div>
-                      </Fragment>
+                      <div key={`${item.id}-${idx}`} className="py-4">
+                        <Person grid={true} person={item} />
+                      </div>
+                    );
+                  } else {
+                    departments[item.department] = 1;
+                    if (dept[1].department !== item.department) {
+                      return (
+                        <Fragment key={`${item.id}-${idx}`}>
+                          <Typography as="h3" className="col-span-full mt-6">
+                            {item.department}
+                          </Typography>
+                          <div className="py-4">
+                            <Person grid={true} person={item} />
+                          </div>
+                        </Fragment>
+                      );
+                    }
+                    return (
+                      <Typography
+                        className="col-span-full"
+                        as="h3"
+                        key={`${item.id}-${idx}`}
+                      >
+                        {item.department}
+                      </Typography>
                     );
                   }
-                  return (
-                    <h3
-                      key={`${item.id}-${idx}`}
-                      className="col-span-full mt-4 text-sm font-semibold text-zinc-100 first-of-type:mt-0 lg:text-lg"
-                    >
-                      {item.department}
-                    </h3>
-                  );
-                }
-              })}
+                })}
+              </div>
             </div>
           </DialogContent>
         </Dialog>
       </div>
       {directorsAndWriters.length > 0 &&
         directorsAndWriters.map((person) => (
-          <div
-            key={person.id}
-            className="flex justify-between gap-2 border-b py-2 last:border-none"
-          >
-            <p className="text-sm text-zinc-200">{person.job}</p>
-            <p className="text-sm text-zinc-400">{person.name}</p>
+          <div key={person.id} className="flex justify-between gap-2 py-2">
+            <p className="text-sm font-medium text-white">{person.job}</p>
+            <p className="text-sm font-medium text-neutral-400">
+              {person.name}
+            </p>
           </div>
         ))}
       {mediaType === "tvshow" &&
         createdBy &&
         createdBy.length > 0 &&
         createdBy.map((person) => (
-          <div
-            key={person.id}
-            className="flex justify-between gap-2 border-b py-2 last:border-none"
-          >
+          <div key={person.id} className="flex justify-between gap-2 py-2">
             <p className="text-sm text-zinc-200">Creator</p>
             <p className="text-sm text-zinc-400">{person.name}</p>
           </div>

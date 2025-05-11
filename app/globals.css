@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 240 5.9% 10%;
+    --primary: 80 100% 51%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 240 4.8% 95.9%;
@@ -45,10 +45,10 @@
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 255 59% 45%;
+    --primary: 327 100% 50%;
     --primary-foreground: 240 5.9% 10%;
 
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 138 100% 65%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 240 3.7% 15.9%;
@@ -73,6 +73,37 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Embla carousel */
+.embla {
+  max-width: 100%;
+  margin: auto;
+  --slide-spacing: 1rem;
+  --slide-size: 100%;
+}
+
+@media screen and (min-width: 1280px) {
+  .embla {
+    --slide-size: 80%;
+  }
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
 }
 
 .MediaSlide {
@@ -118,4 +149,22 @@
 
 .CastSlide:last-child {
   margin-right: 0;
+}
+
+.is-in-view {
+  cursor: pointer;
+}
+
+.is-in-view a {
+  pointer-events: none;
+}
+
+.is-snapped.is-in-view a {
+  pointer-events: all;
+}
+
+.castrow-dialog button:last-child,
+.crew-dialog button:last-child {
+  top: 8px;
+  right: 8px;
 }

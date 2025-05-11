@@ -1,27 +1,25 @@
 import clsx from "clsx";
-import { Images, Videos } from "../types/media";
-import MediaTabs from "./media-tabs";
+import { Images } from "../types/media";
+import MediaGallery from "./media-gallery";
+import Typography from "./typography";
 
 export default function Media({
   className = "",
   images,
-  videos,
 }: {
   className?: string;
   images: Images;
-  videos: Videos;
 }) {
   const data = {
-    Videos: videos.results,
     Backdrops: images.backdrops,
   };
 
   return (
     <div className={clsx(className && className)}>
       <div className="mb-2">
-        <h2 className="font-semibold text-zinc-100">Media</h2>
+        <Typography as="h2">Media</Typography>
       </div>
-      <MediaTabs data={data} />
+      <MediaGallery data={data} />
     </div>
   );
 }

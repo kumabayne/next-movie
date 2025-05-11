@@ -13,7 +13,9 @@ export default function Rating({
   return (
     <div className={cn("flex items-center gap-1", className && className)}>
       <IconStarFilled className="h-4 w-4" />
-      <span className="text-sm">{rating.toFixed(fixed)}</span>
+      <span className="text-xs font-medium md:text-sm lg:text-base">
+        {rating.toFixed(fixed)}
+      </span>
     </div>
   );
 }

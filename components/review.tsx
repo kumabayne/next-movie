@@ -53,10 +53,10 @@ export default function Review({ review }: { review: ReviewType }) {
             </div>
           )}
           <div>
-            <h3 className="text-sm font-semibold leading-tight text-zinc-200">
+            <h3 className="text-sm font-medium leading-tight text-white">
               {review.author_details.username}
             </h3>
-            <p className="text-xs italic leading-tight text-zinc-400">
+            <p className="text-sm font-medium italic leading-tight text-neutral-400">
               {formatDate(review.created_at)}
             </p>
           </div>
@@ -72,7 +72,7 @@ export default function Review({ review }: { review: ReviewType }) {
           <p
             key={index}
             className={clsx(
-              "relative mb-2 text-sm leading-tight text-zinc-400",
+              "relative mb-2 text-sm text-white",
               !isClamped &&
                 !isExpanded &&
                 "after:absolute after:inset-0 after:rounded after:bg-zinc-700",
@@ -85,11 +85,11 @@ export default function Review({ review }: { review: ReviewType }) {
       </div>
       {!isExpanded && isClamped && (
         <button
-          className="absolute bottom-0 left-0 right-0 flex w-full justify-center rounded-b bg-gradient-to-t from-slate-950 via-slate-950 via-90% to-transparent px-2 py-1 text-center text-xs font-semibold text-white transition-colors duration-300 ease-in-out hover:bg-white/20"
+          className="absolute bottom-0 left-0 right-0 flex w-full justify-center rounded-b bg-gradient-to-t from-background via-background via-90% to-transparent p-1 text-center text-xs font-semibold text-white transition-colors duration-300 ease-in-out hover:bg-white/20"
           onClick={() => setIsExpanded(true)}
           type="button"
         >
-          <IconChevronDown className="h-5 w-5" />
+          <IconChevronDown className="h-6 w-6" />
         </button>
       )}
     </div>
