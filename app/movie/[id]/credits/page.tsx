@@ -31,7 +31,7 @@ export default async function MovieReviewsPage(props: {
   const data: { cast: CastType[]; crew: CrewType[] } = await getData(id);
 
   const departments: { [key: string]: number } = {};
-  const reducedDepartments = data.crew.reduce((prev, current) => {
+  const reducedDepartments = data.crew.reduce((prev: string[], current) => {
     if (!prev.includes(current.department)) {
       prev.push(current.department);
     }
