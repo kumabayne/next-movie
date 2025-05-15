@@ -15,6 +15,7 @@ export default function SelectNav({ items }: { items: string[] }) {
     >
       <SelectTrigger>Jump to section</SelectTrigger>
       <SelectContent>
+        <SelectItem value="Cast">Cast</SelectItem>
         {items.map((item) => (
           <SelectItem key={item} value={item}>
             {item}

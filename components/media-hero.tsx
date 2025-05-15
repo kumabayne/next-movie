@@ -33,7 +33,7 @@ export default function MediaHero({
     <>
       <div className="relative">
         <Image
-          className="mb-4 object-cover lg:max-h-[600px]"
+          className="mb-4 object-cover object-top lg:max-h-[600px]"
           src={`${configuration.images.secure_base_url}${configuration.images.backdrop_sizes[3]}${data.backdrop_path}`}
           alt={"title" in data ? data.title : data.name}
           width="1920"
@@ -45,7 +45,7 @@ export default function MediaHero({
         <div className="grid grid-cols-[100px_auto] items-end gap-2 sm:grid-cols-[180px_auto] sm:gap-4 md:gap-4 lg:gap-6 xl:grid-cols-[240px_auto]">
           <div className="relative">
             <Image
-              className="rounded-xl drop-shadow md:rounded-md"
+              className="rounded-xl drop-shadow"
               src={`${configuration.images.secure_base_url}${configuration.images.poster_sizes[4]}${data.poster_path}`}
               alt={"title" in data ? data.title : data.name}
               width="256"

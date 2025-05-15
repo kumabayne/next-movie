@@ -13,7 +13,7 @@ export default async function Header() {
   const session = await auth();
 
   return (
-    <header className="absolute left-0 right-0 top-2 z-50 xl:static xl:py-3">
+    <header className="absolute left-0 right-0 top-2 z-50 xl:static xl:py-2">
       <Container>
         <div className="flex items-center justify-between gap-4">
           <div className="xl:hidden">

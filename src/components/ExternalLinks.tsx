@@ -1,11 +1,13 @@
+"use client";
+
 import { ExternalIds } from "../../types/shared";
 import Link from "next/link";
 import {
   IconBrandFacebook,
   IconBrandInstagram,
   IconBrandTwitter,
-  IconHome,
 } from "@tabler/icons-react";
+import { House } from "@phosphor-icons/react";
 
 export default function ExternalLinks({
   externalIds,
@@ -44,7 +46,7 @@ export default function ExternalLinks({
           href={homepage}
           target="_blank"
         >
-          <IconHome className="h-6 w-6" stroke="1.5" />
+          <House className="h-6 w-6" />
         </Link>
       )}
       {socialLinks.map((link, idx) => {

@@ -44,7 +44,7 @@ export default function MediaCard({
             <div className="to-black/ pointer-events-none absolute inset-0 z-10 rounded-xl bg-gradient-to-bl from-black/40 via-black/0"></div>
             <Image
               alt={"title" in item ? item.title : item.name}
-              className="h-[216px] w-36 rounded-xl sm:h-60 sm:w-40 md:h-[264px] md:w-44 lg:h-[288px] lg:w-48 xl:h-[312px] xl:w-52"
+              className="h-[216px] w-36 rounded-xl sm:h-60 sm:w-40 md:h-[264px] md:w-44 xl:h-[303px] xl:w-[202px]"
               height="240"
               loading="lazy"
               src={`${configuration.images.secure_base_url}${src}`}
@@ -76,7 +76,7 @@ export default function MediaCard({
             </button>
           </div>
         )}
-        <h3 className="line-clamp-2 text-sm font-medium leading-tight">
+        <h3 className="line-clamp-2 text-sm font-medium leading-tight xl:text-base">
           {"title" in item ? item.title : item.name}
         </h3>
       </div>

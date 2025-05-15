@@ -7,7 +7,7 @@ export default function KeywordCard({
   };
 }) {
   return (
-    <div className="bg-sky-500/20 font-medium px-2 py-1 rounded text-sky-500 text-sm hover:bg-sky-500/30 transition-colors ease-in-out duration-300">
+    <div className="rounded border bg-white/10 px-2 py-1 text-sm font-medium text-white transition-colors duration-300 ease-in-out">
       {keyword.name}
     </div>
   );

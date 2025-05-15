@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Cast, Crew } from "../types/people";
+import { CastType, CrewType } from "../types/people";
 import { configuration } from "@/utils/data";
 import Link from "next/link";
 import { slugify } from "@/utils/helpers";
@@ -10,7 +10,7 @@ export default function Person({
   person,
   variant = "vertical",
 }: {
-  person: Cast | Crew;
+  person: CastType | CrewType;
   variant?: "vertical" | "horizontal";
 }) {
   return (

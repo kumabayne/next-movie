@@ -6,8 +6,6 @@ import { configuration } from "@/utils/data";
 import { MovieType } from "../types/movie";
 import Container from "./container";
 import Rating from "./rating";
-import Watchlist from "./watchlist";
-import Favorite from "./favorite";
 import Typography from "./typography";
 import { Badge } from "./ui/badge";
 import { formatDate } from "@/lib/utils";
@@ -49,7 +47,7 @@ export default function HeroCard({ item }: { item: MovieType }) {
           <div className="md:space-y-1 lg:space-y-2">
             <div>
               <Badge
-                className="rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase leading-none tracking-widest text-black"
+                className="rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase leading-none tracking-widest text-black hover:bg-white"
                 data-testid="hero-badge"
               >
                 In Theaters

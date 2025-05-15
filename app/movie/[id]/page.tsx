@@ -1,7 +1,7 @@
 import Container from "@/components/container";
 import { MovieDetails } from "@/types/movie";
 import CastRow from "@/src/components/cast-row";
-import Crew from "@/src/components/crew";
+import Crew from "@/components/crew";
 import MediaHero from "@/components/media-hero";
 import Review from "@/components/review";
 import Link from "next/link";
@@ -22,7 +22,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { IconPlayerPlay, IconX } from "@tabler/icons-react";
+import { IconChevronRight, IconPlayerPlay, IconX } from "@tabler/icons-react";
 
 async function getData(id: string) {
   const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=videos,external_ids,images,credits,keywords,release_dates,reviews,recommendations&include_image_language=en,null`;
@@ -58,7 +58,7 @@ export default async function MoviePage(props: {
         <MediaHero data={data} />
       </div>
       <Container>
-        <div className="space-y-4 lg:grid lg:grid-cols-12 lg:gap-6">
+        <div className="space-y-4 lg:grid lg:grid-cols-12 lg:gap-8 xl:gap-16">
           <div className="col-span-8 space-y-4">
             <div className="mt-6 flex items-center justify-between gap-2">
               {trailers.length > 0 && (
@@ -106,17 +106,18 @@ export default async function MoviePage(props: {
               <Crew crew={data.credits.crew} mediaType="movie" />
             )}
             <div className="space-y-2">
-              <div className="flex items-center justify-between gap-2">
+              {data.reviews.results.length === 0 && (
                 <Typography as="h2">Reviews</Typography>
-                {data.reviews.results.length > 0 && (
-                  <Link
-                    className="text-sm font-medium text-primary"
-                    href={`${id}/reviews`}
-                  >
-                    More
-                  </Link>
-                )}
-              </div>
+              )}
+              {data.reviews.results.length > 0 && (
+                <Link
+                  className="flex items-center gap-1"
+                  href={`${id}/reviews`}
+                >
+                  <Typography as="h2">Reviews</Typography>
+                  <IconChevronRight className="h-4 w-4 lg:h-6 lg:w-6" />
+                </Link>
+              )}
               {data.reviews.results.length === 0 && (
                 <p className="text-sm italic text-neutral-500">
                   No Reviews yet.

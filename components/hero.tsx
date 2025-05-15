@@ -6,6 +6,7 @@ import { MoviesType, MovieType } from "@/types/movie";
 import { MouseEvent, useCallback, useEffect, useRef } from "react";
 import { EmblaCarouselType, EmblaEventType } from "embla-carousel";
 import ClassNames from "embla-carousel-class-names";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 
 const TWEEN_FACTOR_BASE = 0.1;
 
@@ -16,6 +17,14 @@ export default function Hero({ data }: { data: MoviesType }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [ClassNames()]);
   const tweenFactor = useRef(0);
   const tweenNodes = useRef<HTMLElement[]>([]);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
     tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
@@ -68,40 +77,6 @@ export default function Hero({ data }: { data: MoviesType }) {
     [],
   );
 
-  function handleClick(e: MouseEvent<HTMLDivElement>) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const element = e.currentTarget;
-    if (
-      element.classList.contains("is-in-view") &&
-      !element.classList.contains("is-snapped")
-    ) {
-      const nextSibling = element.nextElementSibling;
-      const prevSibling = element.previousElementSibling;
-
-      if (prevSibling && prevSibling.classList.contains("is-snapped")) {
-        emblaApi?.scrollNext();
-        return;
-      }
-
-      if (nextSibling && nextSibling.classList.contains("is-snapped")) {
-        emblaApi?.scrollPrev();
-        return;
-      }
-
-      if (!prevSibling) {
-        emblaApi?.scrollNext();
-        return;
-      }
-
-      if (!nextSibling) {
-        emblaApi?.scrollPrev();
-        return;
-      }
-    }
-  }
-
   useEffect(() => {
     if (!emblaApi) return;
 
@@ -125,17 +100,25 @@ export default function Hero({ data }: { data: MoviesType }) {
             <div className="embla__viewport" ref={emblaRef}>
               <div className="embla__container">
                 {data.results.map((item: MovieType) => (
-                  <div
-                    className="embla__slide"
-                    key={item.id}
-                    onClick={handleClick}
-                  >
+                  <div className="embla__slide max-w-[1000px]" key={item.id}>
                     <div className="embla__slide__number">
                       <HeroCard item={item} />
                     </div>
                   </div>
                 ))}
               </div>
+            </div>
+            <div className="absolute left-6 top-1/2 -translate-y-1/2">
+              <button className="embla__prev" onClick={scrollPrev}>
+                <CaretLeft className="h-16 w-16 text-white/50 drop-shadow-sm transition-colors duration-300 ease-in-out hover:text-white" />
+                <span className="sr-only">Previous</span>
+              </button>
+            </div>
+            <div className="absolute right-6 top-1/2 -translate-y-1/2">
+              <button className="embla__next" onClick={scrollNext}>
+                <CaretRight className="h-16 w-16 text-white/50 drop-shadow-sm transition-colors duration-300 ease-in-out hover:text-white" />
+                <span className="sr-only">Next</span>
+              </button>
             </div>
           </section>
         </div>

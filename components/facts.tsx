@@ -18,11 +18,11 @@ export default function Facts({
   return (
     <div className={clsx("grid grid-cols-2 gap-2", className && className)}>
       <div>
-        <p className="text-sm font-medium">Status:</p>
+        <p className="text-sm font-medium text-white">Status:</p>
         <p className="text-sm font-medium text-neutral-400">{data.status}</p>
       </div>
       <div>
-        <p className="text-sm font-medium">Original Language:</p>
+        <p className="text-sm font-medium text-white">Original Language:</p>
         <p className="text-sm font-medium text-neutral-400">
           {convertLanguageCodeToFullName(
             data.original_language,
@@ -32,7 +32,7 @@ export default function Facts({
       </div>
       {"budget" in data && (
         <div>
-          <p className="text-sm font-medium">Budget:</p>
+          <p className="text-sm font-medium text-white">Budget:</p>
           {data.status !== "Released" ? (
             <p className="text-sm font-medium text-neutral-400">-</p>
           ) : (
@@ -44,13 +44,13 @@ export default function Facts({
       )}
       {"type" in data && (
         <div>
-          <p className="text-sm font-medium">Type:</p>
+          <p className="text-sm font-medium text-white">Type:</p>
           <p className="text-sm font-medium text-neutral-400">{data.type}</p>
         </div>
       )}
       {"revenue" in data && (
         <div>
-          <p className="text-sm font-medium">Revenue:</p>
+          <p className="text-sm font-medium text-white">Revenue:</p>
           {data.status !== "Released" ? (
             <p className="text-sm font-medium text-neutral-400">-</p>
           ) : (
@@ -62,7 +62,7 @@ export default function Facts({
       )}
       {"networks" in data && (
         <div>
-          <p className="text-sm font-medium">Networks:</p>
+          <p className="text-sm font-medium text-white">Networks:</p>
           <div className="flex items-center gap-2">
             {data.networks.map((network) => (
               <Image

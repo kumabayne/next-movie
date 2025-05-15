@@ -21,6 +21,7 @@ import {
   IconMovie,
   IconUsers,
 } from "@tabler/icons-react";
+import { House } from "@phosphor-icons/react";
 import Link from "next/link";
 import ModeToggle from "./mode-toggle";
 import { useState } from "react";
@@ -51,7 +52,7 @@ export default function HamburgerMenu() {
               onClick={() => setOpen(false)}
             >
               <span className="text-primary">
-                <IconHome className="h-6 w-6" stroke="1.5" />
+                <House className="h-6 w-6" />
               </span>
               Home
             </Link>

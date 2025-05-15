@@ -72,13 +72,15 @@ export default async function MovieReviewsPage(props: {
             <SelectNav items={sortedDepartments} />
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="space-y-2">
-              <Typography as="h2">Cast</Typography>
+            <div className="space-y-3">
+              <Typography id="Cast" as="h2">
+                Cast
+              </Typography>
               {data.cast.map((person) => (
                 <Person key={person.id} person={person} variant="horizontal" />
               ))}
             </div>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {sortedCrew.map((person) => {
                 if (person.department in departments) {
                   return (
