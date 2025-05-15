@@ -4,7 +4,7 @@ import MediaHero from "@/components/media-hero";
 import GenreRow from "@/components/genre-row";
 import ExternalLinks from "@/src/components/ExternalLinks";
 import CastRow from "@/src/components/cast-row";
-import Crew from "@/src/components/crew";
+import Crew from "@/components/crew";
 import Recommendations from "@/src/components/Recommendations";
 import Facts from "@/components/facts";
 import Keywords from "@/src/components/Keywords";
