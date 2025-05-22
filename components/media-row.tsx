@@ -28,7 +28,7 @@ export default function MediaRow({
           {data.results.map((item: MovieType | PersonType | TVShow) => (
             <CarouselItem
               key={item.id}
-              className="basis-[152px] pl-2 sm:basis-[168px] md:basis-[192px] md:pl-4 xl:basis-[226] xl:pl-6"
+              className="basis-[152px] pl-2 sm:basis-[168px] md:basis-[192px] md:pl-4 xl:basis-[226px] xl:pl-6"
             >
               <MediaCard key={item.id} item={item} />
             </CarouselItem>
