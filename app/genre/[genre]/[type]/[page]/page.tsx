@@ -1,9 +1,9 @@
 // https://api.themoviedb.org/3/discover/movie?api_key=THE_KEY&language=en-US&sort_by=release_date.desc&page=1&with_genres=35,37,80
 
-import Container from "@/src/components/Container";
-import Pagination from "@/src/components/Pagination";
-import SearchResult from "@/src/components/SearchResult";
-import { Movie } from "@/src/types/movie";
+import Container from "@/components/container";
+import Pagination from "@/components/pagination";
+import SearchResult from "@/components/search-result";
+import { MovieType } from "@/types/movie";
 
 async function getData(genre: string, page: string, type: string) {
   const genreId = genre.split("-")[0];
@@ -24,32 +24,31 @@ async function getData(genre: string, page: string, type: string) {
   return res.json();
 }
 
-export default async function GenrePage({
-  params,
-}: {
-  params: { genre: string; page: string; type: string };
+export default async function GenrePage(props: {
+  params: Promise<{ genre: string; page: string; type: string }>;
 }) {
+  const params = await props.params;
   const genre = params.genre;
   const page = params.page;
   const type = params.type;
   const data: {
     page: number;
-    results: Movie[];
+    results: MovieType[];
     total_pages: number;
     total_results: number;
   } = await getData(genre, page, type);
 
   return (
     <Container>
-      <h1 className="font-semibold mb-2 text-xl text-zinc-100">
+      <h1 className="mb-2 text-xl font-semibold text-zinc-100">
         {genre.split("-")[1]}
       </h1>
-      <div className="flex flex-col gap-2 mb-4">
-        {data.results.map((item: Movie) => (
+      <div className="mb-4 flex flex-col gap-2">
+        {data.results.map((item: MovieType) => (
           <SearchResult key={item.id} item={item} type={type} />
         ))}
       </div>
-      <div className="flex justify-center mb-4">
+      <div className="mb-4 flex justify-center">
         <Pagination
           genre={genre}
           page={page}

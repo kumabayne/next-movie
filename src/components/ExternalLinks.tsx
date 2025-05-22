@@ -1,7 +1,13 @@
-import { FaInstagram, FaFacebookF, FaXTwitter } from "react-icons/fa6";
-import { ExternalIds } from "../types/shared";
+"use client";
+
+import { ExternalIds } from "../../types/shared";
 import Link from "next/link";
-import { HomeIcon } from "@heroicons/react/24/outline";
+import {
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandTwitter,
+} from "@tabler/icons-react";
+import { House } from "@phosphor-icons/react";
 
 export default function ExternalLinks({
   externalIds,
@@ -13,47 +19,47 @@ export default function ExternalLinks({
   const socialLinks = [
     {
       id: externalIds.facebook_id,
-      icon: FaFacebookF,
+      icon: IconBrandFacebook,
       href: `https://facebook.com/${externalIds.facebook_id}`,
       name: "facebook",
     },
     {
       id: externalIds.instagram_id,
-      icon: FaInstagram,
+      icon: IconBrandInstagram,
       href: `https://instagram.com/${externalIds.instagram_id}`,
       name: "instagram",
     },
     {
       id: externalIds.twitter_id,
-      icon: FaXTwitter,
+      icon: IconBrandTwitter,
       href: `https://twitter.com/${externalIds.twitter_id}`,
       name: "twitter",
     },
   ];
 
   return (
-    <div className="flex gap-2 text-white backdrop-blur rounded-s-sm">
+    <div className="flex gap-2 rounded-s-sm text-white backdrop-blur">
       {homepage && (
         <Link
-          className="duration-300 ease-in-out transition-colors hover:text-gray-400"
+          className="transition-colors duration-300 ease-in-out hover:text-neutral-400"
           data-testid="homepage"
           href={homepage}
           target="_blank"
         >
-          <HomeIcon className="h-6 w-6" />
+          <House className="h-6 w-6" />
         </Link>
       )}
       {socialLinks.map((link, idx) => {
         if (link.id) {
           return (
             <Link
-              className="duration-300 ease-in-out transition-colors hover:text-gray-400"
+              className="transition-colors duration-300 ease-in-out hover:text-neutral-400"
               data-testid={link.name}
               key={idx}
               href={link.href}
               target="_blank"
             >
-              <link.icon className="h-6 w-6" />
+              <link.icon className="h-6 w-6" stroke="1" />
             </Link>
           );
         }

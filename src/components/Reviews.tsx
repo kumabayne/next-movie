@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Reviews as ReviewsType } from "../types/reviews";
-import Review from "./Review";
+import { Reviews as ReviewsType } from "../../types/reviews";
+import Review from "../../components/review";
 import { useParams } from "next/navigation";
 
 export default function Reviews({
@@ -26,13 +26,13 @@ export default function Reviews({
   };
 
   return (
-    <div className="gap-4 grid mb-4">
+    <div className="mb-4 grid gap-4">
       {reviews.map((review) => (
         <Review key={review.id} review={review} />
       ))}
       {data.total_pages > page && (
         <button
-          className="bg-pink-500 font-semibold px-2 py-1 rounded-sm text-sm text-white"
+          className="rounded-sm bg-pink-500 px-2 py-1 text-sm font-semibold text-white"
           onClick={handleClick}
           type="button"
         >

@@ -1,9 +1,6 @@
-import Image from "next/image";
-import { configuration } from "@/src/utils/data";
-import Container from "@/src/components/Container";
-import { Person } from "@/src/types/people";
-import SearchResult from "@/src/components/SearchResult";
-import { Movie } from "@/src/types/movie";
+import Container from "@/components/container";
+import SearchResult from "@/components/search-result";
+import { MovieType } from "@/types/movie";
 
 async function getData(query: string) {
   const url = `https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-US&page=1`;
@@ -23,21 +20,20 @@ async function getData(query: string) {
   return res.json();
 }
 
-export default async function PersonPage({
-  params,
-}: {
-  params: {
+export default async function PersonPage(props: {
+  params: Promise<{
     query: string;
-  };
+  }>;
 }) {
+  const params = await props.params;
   const query = params.query;
-  const data: { results: Movie[] } = await getData(query);
+  const data: { results: MovieType[] } = await getData(query);
 
   return (
     <div className="py-4">
       <Container>
         <div className="flex flex-col gap-2">
-          {data.results.map((item: Movie) => (
+          {data.results.map((item: MovieType) => (
             <SearchResult key={item.id} item={item} />
           ))}
         </div>

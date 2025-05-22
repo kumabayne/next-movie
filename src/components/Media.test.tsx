@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Media from "./Media";
+import Media from "../../components/media";
 import { images, videos } from "../utils/test-data";
 
 describe("Media", () => {

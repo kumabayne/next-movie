@@ -1,21 +1,28 @@
-import Container from "@/src/components/Container";
-import { MovieDetails } from "@/src/types/movie";
-import CastRow from "@/src/components/CastRow";
-import GenreRow from "@/src/components/GenreRow";
-import Crew from "@/src/components/Crew";
-import MediaHero from "@/src/components/MediaHero";
-import Review from "@/src/components/Review";
+import Container from "@/components/container";
+import { MovieDetails } from "@/types/movie";
+import CastRow from "@/src/components/cast-row";
+import Crew from "@/components/crew";
+import MediaHero from "@/components/media-hero";
+import Review from "@/components/review";
 import Link from "next/link";
-import Media from "@/src/components/Media";
+import Media from "@/components/media";
 import ExternalLinks from "@/src/components/ExternalLinks";
-import Facts from "@/src/components/Facts";
+import Facts from "@/components/facts";
 import Keywords from "@/src/components/Keywords";
 import Recommendations from "@/src/components/Recommendations";
-import Rating from "@/src/components/Rating";
-import Image from "next/image";
-import { configuration } from "@/src/utils/data";
-import Watchlist from "@/src/components/Watchlist";
-import Favorite from "@/src/components/Favorite";
+import Watchlist from "@/components/watchlist";
+import Favorite from "@/components/favorite";
+import Typography from "@/components/typography";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { IconChevronRight, IconPlayerPlay, IconX } from "@tabler/icons-react";
 
 async function getData(id: string) {
   const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=videos,external_ids,images,credits,keywords,release_dates,reviews,recommendations&include_image_language=en,null`;
@@ -35,73 +42,104 @@ async function getData(id: string) {
   return res.json();
 }
 
-export default async function MoviePage({
-  params,
-}: {
-  params: { id: string };
+export default async function MoviePage(props: {
+  params: Promise<{ id: string }>;
 }) {
+  const params = await props.params;
   const id = params.id;
   const data: MovieDetails = await getData(id);
+  const trailers = data.videos.results.filter(
+    (video) => video.type === "Trailer",
+  );
 
   return (
     <>
-      <div className="relative after:absolute after:inset-0 after:z-10 after:bg-gradient-to-t after:from-slate-950 after:to-transparent lg:max-h-[600px]">
+      <div className="relative after:absolute after:inset-0 after:bg-gradient-to-t after:from-black after:via-transparent after:to-black/70 lg:max-h-[600px] xl:after:to-transparent">
         <MediaHero data={data} />
       </div>
       <Container>
-        <div className="flex gap-2 mb-2 md:hidden">
-          <Watchlist />
-          <Favorite />
-        </div>
-        <div className="mb-2 md:hidden">
-          <GenreRow genres={data.genres} media={true} />
-        </div>
-        <div className="lg:grid lg:grid-cols-12 lg:gap-6">
-          <div className="col-span-8">
-            <div className="mb-4">
-              <h2 className="font-semibold text-white text-lg">Summary</h2>
+        <div className="space-y-4 lg:grid lg:grid-cols-12 lg:gap-8 xl:gap-16">
+          <div className="col-span-8 space-y-4">
+            <div className="mt-6 flex items-center justify-between gap-2">
+              {trailers.length > 0 && (
+                <Dialog>
+                  <DialogTrigger className="flex gap-1 rounded-full border border-white px-3 py-1.5 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:text-white/90 focus:text-white/90">
+                    <IconPlayerPlay className="h-4 w-4" />
+                    <span>Watch Trailer</span>
+                  </DialogTrigger>
+
+                  <DialogContent
+                    className="flex h-[100svh] w-[100svw] max-w-none items-center justify-center border-none bg-transparent p-0"
+                    hideCloseBtn={true}
+                  >
+                    <DialogClose className="absolute right-2 top-2 z-[100] p-2">
+                      <IconX className="h-6 w-6" />
+                    </DialogClose>
+                    <div className="mx-auto w-4/5">
+                      <DialogHeader className="sr-only">
+                        <DialogTitle>{data.title} - Trailer</DialogTitle>
+                        <DialogDescription>{data.overview}</DialogDescription>
+                      </DialogHeader>
+                      <iframe
+                        className="aspect-video w-full"
+                        src={`https://www.youtube.com/embed/${trailers[0].key}`}
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              )}
+              <div className="flex gap-2 md:hidden">
+                <Watchlist />
+                <Favorite />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Typography as="h2">Summary</Typography>
               <p className="text-white">{data.overview}</p>
             </div>
-            <CastRow cast={data.credits.cast} className="mb-4" />
+            <CastRow cast={data.credits.cast} />
             {data.credits.crew.length > 0 && (
-              <Crew
-                className="mb-4"
-                crew={data.credits.crew}
-                mediaType="movie"
-              />
+              <Crew crew={data.credits.crew} mediaType="movie" />
             )}
-            <div className="mb-4">
-              <div className="mb-2">
-                <h2 className="font-semibold text-zinc-100">Reviews</h2>
-              </div>
+            <div className="space-y-2">
               {data.reviews.results.length === 0 && (
-                <p className="italic text-sm text-zinc-400">No Reviews yet.</p>
+                <Typography as="h2">Reviews</Typography>
+              )}
+              {data.reviews.results.length > 0 && (
+                <Link
+                  className="flex items-center gap-1"
+                  href={`${id}/reviews`}
+                >
+                  <Typography as="h2">Reviews</Typography>
+                  <IconChevronRight className="h-4 w-4 lg:h-6 lg:w-6" />
+                </Link>
+              )}
+              {data.reviews.results.length === 0 && (
+                <p className="text-sm italic text-neutral-500">
+                  No Reviews yet.
+                </p>
               )}
               {data.reviews.results.length > 0 && (
                 <>
                   <Review review={data.reviews.results[0]} />
-                  <div className="flex justify-end mt-2">
-                    <Link
-                      className="text-pink-500 text-sm"
-                      href={`${id}/reviews`}
-                    >
-                      Read More Reviews
-                    </Link>
-                  </div>
                 </>
               )}
             </div>
-            <Media className="mb-4" images={data.images} videos={data.videos} />
+            <Media images={data.images} />
           </div>
-          <div className="col-span-4">
-            <div className="mb-4">
+          <div className="col-span-4 space-y-4">
+            <div>
               <ExternalLinks
                 externalIds={data.external_ids}
                 homepage={data.homepage}
               />
             </div>
-            <Facts className="mb-4" data={data} />
-            <Keywords className="mb-4" keywords={data.keywords.keywords} />
+            <Facts data={data} />
+            <Keywords keywords={data.keywords.keywords} />
           </div>
         </div>
         {data.recommendations.results.length > 0 && (
