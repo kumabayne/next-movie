@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { configuration } from "@/utils/data";
 import Container from "@/components/container";
-import { PersonDetails } from "@/types/people";
+import { PersonDetailsType } from "@/types/people";
 import { calculateAge, formatDate } from "@/utils/helpers";
 import Rating from "@/components/rating";
 import Credits from "@/src/components/Credits";
@@ -33,7 +33,7 @@ export default async function PersonPage(props: {
 }) {
   const params = await props.params;
   const id = params.slugs[0];
-  const data: PersonDetails = await getData(id);
+  const data: PersonDetailsType = await getData(id);
   const castCredits = data.combined_credits.cast.slice(0).sort((a, b) => {
     const aDate = "release_date" in a ? a.release_date : a.first_air_date;
     const bDate = "release_date" in b ? b.release_date : b.first_air_date;

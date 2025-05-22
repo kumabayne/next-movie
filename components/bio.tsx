@@ -1,8 +1,6 @@
 "use client";
 
-import { PersonDetails } from "../types/people";
-import Modal from "../src/components/Modal";
-import { useState } from "react";
+import { PersonDetailsType } from "../types/people";
 import Image from "next/image";
 import { configuration } from "@/utils/data";
 import { calculateAge, formatDate } from "@/utils/helpers";
@@ -10,8 +8,7 @@ import Rating from "./rating";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { IconChevronRight } from "@tabler/icons-react";
 
-export default function Bio({ data }: { data: PersonDetails }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Bio({ data }: { data: PersonDetailsType }) {
   const paragraphs = data.biography.split("\n\n");
 
   return (

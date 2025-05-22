@@ -31,7 +31,7 @@ export default function CastRow({
           </Typography>
         </Link>
       </div>
-      <Carousel>
+      <Carousel opts={{ dragFree: true }}>
         <CarouselContent className="-ml-2">
           {cast.map((item: CastType) => (
             <CarouselItem

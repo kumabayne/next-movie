@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Movie } from "../types/movie";
+import { MovieType } from "../types/movie";
 import { TVShow } from "../types/tv";
 import { configuration } from "../utils/data";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function KnownFor({
   knownFor,
 }: {
-  knownFor: (Movie | TVShow)[];
+  knownFor: (MovieType | TVShow)[];
 }) {
   return (
     <div className="mb-4 grid grid-cols-4 gap-2">

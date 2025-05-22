@@ -41,63 +41,65 @@ export default function MediaHero({
           priority
         />
       </div>
-      <Container className="absolute bottom-0 z-20">
-        <div className="grid grid-cols-[100px_auto] items-end gap-2 sm:grid-cols-[180px_auto] sm:gap-4 md:gap-4 lg:gap-6 xl:grid-cols-[240px_auto]">
-          <div className="relative">
-            <Image
-              className="rounded-xl drop-shadow"
-              src={`${configuration.images.secure_base_url}${configuration.images.poster_sizes[4]}${data.poster_path}`}
-              alt={"title" in data ? data.title : data.name}
-              width="256"
-              height="384"
-              loading="lazy"
-            />
-          </div>
-          <div>
-            <div className="md:space-y-1 lg:space-y-2">
-              <div className="flex items-center gap-2">
-                <Badge
-                  className="rounded-full bg-white text-[10px] font-bold uppercase leading-none text-black"
-                  data-testid="hero-badge"
-                >
-                  {rating || "NR"}
-                </Badge>
-              </div>
-              <div className="flex items-center gap-2">
-                <Rating className="text-white" rating={data.vote_average} />
-                <span>&middot;</span>
-                <p className="text-xs font-medium text-white md:text-sm lg:text-base">
-                  {year}
-                </p>
-                {"runtime" in data && (
-                  <>
-                    <span>&middot;</span>
-                    {data.runtime > 0 ? (
-                      <p className="text-xs font-medium text-white md:text-sm lg:text-base">
-                        {data.runtime}m
-                      </p>
-                    ) : (
-                      <p className="text-xs font-medium text-white md:text-sm lg:text-base">
-                        Runtime: Unknown
-                      </p>
-                    )}
-                  </>
-                )}
-              </div>
+      <div className="absolute bottom-0 left-0 right-0 z-20">
+        <Container>
+          <div className="grid grid-cols-[100px_auto] items-end gap-2 sm:grid-cols-[180px_auto] sm:gap-4 md:gap-4 lg:gap-6 xl:grid-cols-[240px_auto]">
+            <div className="relative">
+              <Image
+                className="rounded-xl drop-shadow"
+                src={`${configuration.images.secure_base_url}${configuration.images.poster_sizes[4]}${data.poster_path}`}
+                alt={"title" in data ? data.title : data.name}
+                width="256"
+                height="384"
+                loading="lazy"
+              />
             </div>
-            <Typography as="h1">
-              {"title" in data ? data.title : data.name}
-            </Typography>
-            <div className="hidden md:mb-2 md:flex md:gap-2">
-              <Watchlist />
-              <Favorite />
-            </div>
-            {/* <div className="hidden md:block">
+            <div>
+              <div className="md:space-y-1 lg:space-y-2">
+                <div className="flex items-center gap-2">
+                  <Badge
+                    className="rounded-full bg-white text-[10px] font-bold uppercase leading-none text-black"
+                    data-testid="hero-badge"
+                  >
+                    {rating || "NR"}
+                  </Badge>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Rating className="text-white" rating={data.vote_average} />
+                  <span>&middot;</span>
+                  <p className="text-xs font-medium text-white md:text-sm lg:text-base">
+                    {year}
+                  </p>
+                  {"runtime" in data && (
+                    <>
+                      <span>&middot;</span>
+                      {data.runtime > 0 ? (
+                        <p className="text-xs font-medium text-white md:text-sm lg:text-base">
+                          {data.runtime}m
+                        </p>
+                      ) : (
+                        <p className="text-xs font-medium text-white md:text-sm lg:text-base">
+                          Runtime: Unknown
+                        </p>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+              <Typography as="h1">
+                {"title" in data ? data.title : data.name}
+              </Typography>
+              <div className="hidden md:mb-2 md:flex md:gap-2">
+                <Watchlist />
+                <Favorite />
+              </div>
+              {/* <div className="hidden md:block">
               <GenreRow genres={data.genres} media={true} />
             </div> */}
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </>
   );
 }

@@ -3,9 +3,8 @@
 import useEmblaCarousel from "embla-carousel-react";
 import HeroCard from "./hero-card";
 import { MoviesType, MovieType } from "@/types/movie";
-import { MouseEvent, useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { EmblaCarouselType, EmblaEventType } from "embla-carousel";
-import ClassNames from "embla-carousel-class-names";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 
 const TWEEN_FACTOR_BASE = 0.1;
@@ -14,7 +13,7 @@ const numberWithinRange = (number: number, min: number, max: number): number =>
   Math.min(Math.max(number, min), max);
 
 export default function Hero({ data }: { data: MoviesType }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [ClassNames()]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, []);
   const tweenFactor = useRef(0);
   const tweenNodes = useRef<HTMLElement[]>([]);
 
@@ -108,13 +107,13 @@ export default function Hero({ data }: { data: MoviesType }) {
                 ))}
               </div>
             </div>
-            <div className="absolute left-6 top-1/2 -translate-y-1/2">
+            <div className="absolute left-6 top-1/2 hidden -translate-y-1/2 xl:block">
               <button className="embla__prev" onClick={scrollPrev}>
                 <CaretLeft className="h-16 w-16 text-white/50 drop-shadow-sm transition-colors duration-300 ease-in-out hover:text-white" />
                 <span className="sr-only">Previous</span>
               </button>
             </div>
-            <div className="absolute right-6 top-1/2 -translate-y-1/2">
+            <div className="absolute right-6 top-1/2 hidden -translate-y-1/2 xl:block">
               <button className="embla__next" onClick={scrollNext}>
                 <CaretRight className="h-16 w-16 text-white/50 drop-shadow-sm transition-colors duration-300 ease-in-out hover:text-white" />
                 <span className="sr-only">Next</span>

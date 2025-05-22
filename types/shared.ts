@@ -1,4 +1,4 @@
-import { Movie } from "./movie";
+import { MovieType } from "./movie";
 import { TVShow } from "./tv";
 
 export type Keyword = {
@@ -24,7 +24,7 @@ export interface ExternalIdsTVShow extends ExternalIds {
 
 export type Recommendations = {
   page: number;
-  results: Movie[] | TVShow[];
+  results: MovieType[] | TVShow[];
   total_pages: number;
   total_results: number;
 };

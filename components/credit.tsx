@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { Movie } from "../types/movie";
+import { MovieType } from "../types/movie";
 import { TVShow } from "../types/tv";
 import Rating from "./rating";
 import { configuration } from "../utils/data";
 import Link from "next/link";
 import { IconDeviceTvOld, IconMovie } from "@tabler/icons-react";
 
-export default function Credit({ credit }: { credit: Movie | TVShow }) {
+export default function Credit({ credit }: { credit: MovieType | TVShow }) {
   const year = (
     "release_date" in credit ? credit.release_date : credit.first_air_date || ""
   ).substring(0, 4);

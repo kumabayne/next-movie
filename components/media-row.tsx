@@ -23,7 +23,7 @@ export default function MediaRow({
       <Typography as="h2" className="mb-2">
         {heading}
       </Typography>
-      <Carousel>
+      <Carousel opts={{ dragFree: true }}>
         <CarouselContent className="-ml-2 md:-ml-4 xl:-ml-6">
           {data.results.map((item: MovieType | PersonType | TVShow) => (
             <CarouselItem

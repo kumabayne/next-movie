@@ -60,7 +60,7 @@ export default async function TVPage(props: {
             <span>{data.number_of_episodes} episodes</span>
           </div>
           <div className="mb-2">
-            <GenreRow media={false} genres={data.genres} />
+            <GenreRow media={false} />
           </div>
           <ExternalLinks
             externalIds={data.external_ids}

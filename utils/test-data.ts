@@ -1,7 +1,7 @@
 import { Images, Videos } from "../types/media";
-import { Movie, MovieDetails } from "../types/movie";
+import { MovieType, MovieDetails } from "../types/movie";
 import { ExternalIds } from "../types/shared";
-import { Person } from "../types/people";
+import { PersonType } from "../types/people";
 import { Keyword, Recommendations } from "../types/shared";
 import { TVShow } from "../types/tv";
 
@@ -1938,7 +1938,7 @@ export const keywords = {
   ],
 };
 
-export const movie: Movie = {
+export const movie: MovieType = {
   adult: false,
   backdrop_path: "/wdwcOBMkt3zmPQuEMxB3FUtMio2.jpg",
   id: 271110,
@@ -1957,7 +1957,7 @@ export const movie: Movie = {
   vote_count: 21989,
 };
 
-export const movieCredit: Movie = {
+export const movieCredit: MovieType = {
   adult: false,
   backdrop_path: "/2oWhQMajau170C7Nqc0WbOrMUOB.jpg",
   genre_ids: [18, 80],
@@ -7291,7 +7291,7 @@ export const personDead = {
   },
 };
 
-export const personMovie: Person = {
+export const personMovie: PersonType = {
   adult: false,
   id: 3223,
   name: "Robert Downey Jr.",
@@ -7359,7 +7359,7 @@ export const personMovie: Person = {
   ],
 };
 
-export const personTV: Person = {
+export const personTV: PersonType = {
   adult: false,
   id: 3277679,
   name: "Ellie Blake",

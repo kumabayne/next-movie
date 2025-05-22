@@ -1,5 +1,5 @@
 import { Videos } from "./media";
-import { Cast, Crew } from "./people";
+import { CastType, CrewType } from "./people";
 import { ExternalIdsTVShow, Keyword, Recommendations } from "./shared";
 
 export type TVShow = {
@@ -34,8 +34,8 @@ export type TVShow = {
 export type TVShowDetails = {
   adult: boolean;
   aggregate_credits: {
-    cast: Cast[];
-    crew: Crew[];
+    cast: CastType[];
+    crew: CrewType[];
   };
   backdrop_path: string;
   content_ratings: {

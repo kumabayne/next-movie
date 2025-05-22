@@ -1,6 +1,4 @@
 import { Recommendations as RecommendationsType } from "../../types/shared";
-import MediaCard from "../../components/media-card";
-import Swiper from "./Swiper";
 import MediaRow from "@/components/media-row";
 
 export default function Recommendations({

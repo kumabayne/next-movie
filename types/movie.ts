@@ -1,5 +1,5 @@
 import { Images, Videos } from "./media";
-import { Cast, Crew } from "./people";
+import { CastType, CrewType } from "./people";
 import { Reviews } from "./reviews";
 import { ExternalIds, Keyword, Recommendations } from "./shared";
 
@@ -46,8 +46,8 @@ export type MovieDetails = {
   } | null;
   budget: number;
   credits: {
-    cast: Cast[];
-    crew: Crew[];
+    cast: CastType[];
+    crew: CrewType[];
   };
   external_ids: ExternalIds;
   genres: {
