@@ -36,28 +36,25 @@ const movies: {
   {
     title: "In Theaters",
     href: "/movies/now_playing",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+    description: "Check out the latest movies in theaters now.",
     Icon: IconTheater,
   },
   {
     title: "Popular",
     href: "/movies/popular",
-    description:
-      "For sighted users to preview content available behind a link.",
+    description: "Find out what everyone is talking about. Or...don't.",
     Icon: IconFlame,
   },
   {
     title: "Top Rated",
     href: "/movies/top_rated",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    description: "Who gave this 5 stars?",
     Icon: IconStar,
   },
   {
     title: "Coming Soon",
     href: "/movies/upcoming",
-    description: "Visually or semantically separates content.",
+    description: "Find the next Marvel movie to watch.",
     Icon: IconCalendar,
   },
 ];
@@ -71,28 +68,26 @@ const tv: {
   {
     title: "On TV",
     href: "/tv/airing_today",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+    description: "Do people still watch Tv? Find out what's on now.",
     Icon: IconDeviceTv,
   },
   {
     title: "Listings",
     href: "/tv/on_the_air",
-    description:
-      "For sighted users to preview content available behind a link.",
+    description: "Missed the latest episode? Never miss an episode again.",
     Icon: IconHelpSquareRounded,
   },
   {
     title: "Popular",
     href: "/tv/popular",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    description: "I need something to talk about at work tomorrow.",
     Icon: IconFlame,
   },
   {
     title: "Top Rated",
     href: "/tv/top_rated",
-    description: "Visually or semantically separates content.",
+    description:
+      "I still don't know who Walter White is and at this point I'm too afraid to ask.",
     Icon: IconStar,
   },
 ];
@@ -104,14 +99,17 @@ export default function Navigation() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Watch Now</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[772px] lg:grid-cols-[.75fr_1fr_1fr]">
-              <li className="row-span-3">
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {/* <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, #fc5c7d, #6a82fb)",
+                    }}
                   >
-                    {/* <Icons.logo className="h-6 w-6" /> */}
                     <div className="mb-2 mt-4 text-lg font-medium">
                       shadcn/ui
                     </div>
@@ -121,34 +119,34 @@ export default function Navigation() {
                     </p>
                   </Link>
                 </NavigationMenuLink>
-              </li>
+              </li> */}
               <ListItem
                 href="/movies/now_playing"
                 title="In Theaters"
                 Icon={IconTheater}
               >
-                Re-usable components built using Radix UI and Tailwind CSS.
+                Check out the latest movies in theaters now.
               </ListItem>
               <ListItem
                 href="/streaming/movies"
                 title="Streaming"
                 Icon={IconCast}
               >
-                How to install dependencies and structure your app.
+                Bored? Discover new movies to watch at home or on the go.
               </ListItem>
               <ListItem
                 href="/tv/airing_today"
                 title="On TV"
                 Icon={IconDeviceTv}
               >
-                Styles for headings, paragraphs, lists...etc
+                Do people still watch Tv? Find out what&apos;s on now.
               </ListItem>
               <ListItem
                 href="/movies/rentals"
                 title="Rent"
                 Icon={IconDeviceProjector}
               >
-                Styles for headings, paragraphs, lists...etc
+                Want to watch a movie once and not own it? Rent it.
               </ListItem>
             </ul>
           </NavigationMenuContent>
