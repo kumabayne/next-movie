@@ -62,4 +62,12 @@ export type PersonDetailsType = {
   combined_credits: {
     cast: (MovieType | TVShow)[];
   };
+  external_ids?: ExternalIds | null;
+};
+
+export type ExternalIds = {
+  facebook_id: string | null;
+  twitter_id: string | null;
+  imdb_id: string | null;
+  instagram_id: string | null;
 };
