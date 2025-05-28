@@ -13,12 +13,14 @@ export default function Bio({ data }: { data: PersonDetailsType }) {
       <div
         className={cn(
           "space-y-2",
-          !open && "line-clamp-4",
+          !open && "line-clamp-4 xl:line-clamp-6",
           open && "line-clamp-none",
         )}
       >
         {paragraphs.map((item, i) => (
-          <p key={i}>{item}</p>
+          <p className="xl:text-lg" key={i}>
+            {item}
+          </p>
         ))}
       </div>
       <div className="flex justify-end">

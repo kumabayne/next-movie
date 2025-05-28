@@ -14,7 +14,7 @@ export default function Credit({ credit }: { credit: MovieType | TVShow }) {
   return (
     <Link
       href={`/${credit.media_type}/${credit.id}`}
-      className="mb-2 grid grid-cols-credits items-center gap-2 rounded border p-2 xl:flex"
+      className="mb-2 grid grid-cols-credits items-center gap-2 rounded border p-2"
     >
       {credit.poster_path ? (
         <Image

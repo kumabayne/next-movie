@@ -3,13 +3,13 @@ import { configuration } from "@/utils/data";
 import Container from "@/components/container";
 import { PersonDetailsType } from "@/types/people";
 import { calculateAge, formatDate } from "@/utils/helpers";
-import Rating from "@/components/rating";
 import Credits from "@/src/components/Credits";
 import Bio from "@/components/bio";
 import Typography from "@/components/typography";
 import MediaRow from "@/components/media-row";
 import { MovieType } from "@/types/movie";
 import PersonSocial from "@/components/person-social";
+import ImageGallery from "@/components/image-gallery";
 
 async function getData(id: string) {
   const url = `https://api.themoviedb.org/3/person/${id}?language=en-US&append_to_response=combined_credits,images,external_ids`;
@@ -56,16 +56,25 @@ export default async function PersonPage(props: {
           <div className="mb-4 grid grid-cols-[120px_1fr] items-start gap-2 md:grid-cols-[160px_1fr] md:gap-6">
             <div className="xl xl:grid">
               <div className="relative">
-                <Image
-                  className="rounded-xl"
-                  src={`${configuration.images.secure_base_url}${configuration.images.profile_sizes[3]}${data.profile_path}`}
-                  alt={data.name}
-                  width="1920"
-                  height="1080"
-                />
-                <div className="absolute bottom-1 right-1">
-                  <Rating rating={Math.round(data.popularity)} fixed={0} />
-                </div>
+                {data.images.profiles.length > 1 ? (
+                  <ImageGallery
+                    images={data.images}
+                    trigger={{
+                      src: `${configuration.images.secure_base_url}${configuration.images.profile_sizes[3]}${data.profile_path}`,
+                      alt: data.name,
+                      width: 1920,
+                      height: 1080,
+                    }}
+                  />
+                ) : (
+                  <Image
+                    className="rounded-xl"
+                    src={`${configuration.images.secure_base_url}${configuration.images.profile_sizes[3]}${data.profile_path}`}
+                    alt={data.name}
+                    width="1920"
+                    height="1080"
+                  />
+                )}
               </div>
             </div>
             <div className="space-y-2 md:self-end">
@@ -113,10 +122,15 @@ export default async function PersonPage(props: {
             <Bio data={data} />
           </div>
         </div>
-        <div className="xl:mt-6">
+        <div className="space-y-2 xl:mt-6">
+          <Typography as="h2">Known For</Typography>
           <MediaRow data={{ results: knownFor }} />
         </div>
-        <Credits credits={castCredits} />
+        <div className="grid grid-cols-12 gap-6">
+          <div className="col-span-8">
+            <Credits credits={castCredits} />
+          </div>
+        </div>
       </Container>
     </main>
   );

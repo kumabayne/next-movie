@@ -53,6 +53,7 @@ export type PersonDetailsType = {
   gender: number;
   homepage: string | null;
   id: number;
+  images: Images;
   imdb_id: string;
   known_for_department: string;
   name: string;
@@ -70,4 +71,16 @@ export type ExternalIds = {
   twitter_id: string | null;
   imdb_id: string | null;
   instagram_id: string | null;
+};
+
+export type Images = {
+  profiles: {
+    aspect_ratio: number;
+    height: number;
+    iso_639_1: null;
+    file_path: string;
+    vote_average: number;
+    vote_count: number;
+    width: number;
+  }[];
 };
