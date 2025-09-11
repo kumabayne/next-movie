@@ -12,7 +12,7 @@ export default function Container({
     <div
       data-testid="container"
       className={clsx(
-        "container mx-auto px-4 md:px-6 xl:px-8",
+        "container mx-auto px-2 md:px-4 lg:px-6 xl:px-8",
         className && className,
       )}
     >

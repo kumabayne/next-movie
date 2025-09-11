@@ -18,7 +18,7 @@ export default function Typography({
     <As
       id={id}
       className={cn(
-        as === "h1" && "text-lg font-bold sm:text-xl md:text-2xl lg:text-4xl",
+        as === "h1" && "text-2xl font-bold md:text-3xl lg:text-4xl",
         as === "h2" && "text-md font-semibold md:text-xl lg:text-2xl",
         as === "h3" && "text-base font-semibold md:text-lg lg:text-xl",
         className && className,
