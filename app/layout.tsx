@@ -41,7 +41,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          <div className="fixed left-2 top-2 z-50 w-full md:container md:left-0 md:right-0 md:top-6 md:px-4 lg:px-6 xl:px-8">
+            <Header />
+          </div>
           <div>
             {children}
             <div className="col-start-2 col-end-3">

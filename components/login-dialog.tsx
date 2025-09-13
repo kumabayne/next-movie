@@ -12,7 +12,7 @@ import Image from "next/image";
 export default function LoginDialog() {
   return (
     <Dialog>
-      <DialogTrigger className="rounded-md bg-white px-4 py-2 text-sm font-medium text-black hover:bg-white/90">
+      <DialogTrigger className="h-10 rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-white/90">
         Login
       </DialogTrigger>
       <DialogContent className="max-w-md gap-8">

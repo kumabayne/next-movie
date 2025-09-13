@@ -13,6 +13,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
+  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import {
   Icon,
@@ -97,30 +98,13 @@ export default function Navigation() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Watch Now</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="rounded-full bg-transparent hover:!bg-white/10">
+            Watch Now
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {/* <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <Link
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, #fc5c7d, #6a82fb)",
-                    }}
-                  >
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
-                    </p>
-                  </Link>
-                </NavigationMenuLink>
-              </li> */}
               <ListItem
+                className="hover:bg-white/10"
                 href="/movies/now_playing"
                 title="In Theaters"
                 Icon={IconTheater}
@@ -128,6 +112,7 @@ export default function Navigation() {
                 Check out the latest movies in theaters now.
               </ListItem>
               <ListItem
+                className="hover:bg-white/10"
                 href="/streaming/movies"
                 title="Streaming"
                 Icon={IconCast}
@@ -135,6 +120,7 @@ export default function Navigation() {
                 Bored? Discover new movies to watch at home or on the go.
               </ListItem>
               <ListItem
+                className="hover:bg-white/10"
                 href="/tv/airing_today"
                 title="On TV"
                 Icon={IconDeviceTv}
@@ -142,6 +128,7 @@ export default function Navigation() {
                 Do people still watch Tv? Find out what&apos;s on now.
               </ListItem>
               <ListItem
+                className="hover:bg-white/10"
                 href="/movies/rentals"
                 title="Rent"
                 Icon={IconDeviceProjector}
@@ -152,11 +139,14 @@ export default function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Movies</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="rounded-full bg-transparent hover:!bg-white/10">
+            Movies
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {movies.map((category) => (
                 <ListItem
+                  className="hover:bg-white/10"
                   key={category.title}
                   title={category.title}
                   href={category.href}
@@ -169,11 +159,14 @@ export default function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>TV Shows</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="rounded-full bg-transparent hover:!bg-white/10">
+            TV Shows
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {tv.map((category) => (
                 <ListItem
+                  className="hover:bg-white/10"
                   key={category.title}
                   title={category.title}
                   href={category.href}
@@ -187,7 +180,12 @@ export default function Navigation() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/people" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "rounded-full bg-transparent hover:!bg-white/10",
+              )}
+            >
               People
             </NavigationMenuLink>
           </Link>

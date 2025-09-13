@@ -21,9 +21,7 @@ import {
   IconMovie,
   IconUsers,
 } from "@tabler/icons-react";
-import { House } from "@phosphor-icons/react";
 import Link from "next/link";
-import ModeToggle from "./mode-toggle";
 import { useState } from "react";
 
 export default function HamburgerMenu() {
@@ -35,7 +33,7 @@ export default function HamburgerMenu() {
         <IconMenu3 className="h-6 w-6" />
         <span className="sr-only">Open Menu</span>
       </SheetTrigger>
-      <SheetContent className="pt-12" side="left">
+      <SheetContent className="border-black/10 bg-black/60 pt-12" side="left">
         <div className="flex h-full flex-col justify-between gap-2">
           <SheetTitle className="sr-only">Navigation</SheetTitle>
           <SheetDescription
@@ -51,8 +49,8 @@ export default function HamburgerMenu() {
               href="/"
               onClick={() => setOpen(false)}
             >
-              <span className="text-primary">
-                <House className="h-6 w-6" />
+              <span>
+                <IconHome className="h-6 w-6" />
               </span>
               Home
             </Link>
@@ -60,11 +58,8 @@ export default function HamburgerMenu() {
               <AccordionItem value="watch-now">
                 <AccordionTrigger className="py-2 hover:no-underline">
                   <div className="flex gap-2">
-                    <IconDeviceRemote
-                      className="h-6 w-6 text-primary"
-                      stroke="1.5"
-                    />{" "}
-                    Watch Now
+                    <IconDeviceRemote className="h-6 w-6" stroke="1.5" /> Watch
+                    Now
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
@@ -95,8 +90,7 @@ export default function HamburgerMenu() {
               <AccordionItem value="movies">
                 <AccordionTrigger className="py-2 hover:no-underline">
                   <div className="flex gap-2">
-                    <IconMovie className="h-6 w-6 text-primary" stroke="1.5" />{" "}
-                    Movies
+                    <IconMovie className="h-6 w-6" stroke="1.5" /> Movies
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
@@ -127,11 +121,8 @@ export default function HamburgerMenu() {
               <AccordionItem value="tv-shows">
                 <AccordionTrigger className="py-2 hover:no-underline">
                   <div className="flex gap-2">
-                    <IconDeviceTvOld
-                      className="h-6 w-6 text-primary"
-                      stroke="1.5"
-                    />{" "}
-                    TV Shows
+                    <IconDeviceTvOld className="h-6 w-6" stroke="1.5" /> TV
+                    Shows
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
@@ -162,8 +153,7 @@ export default function HamburgerMenu() {
               <AccordionItem className="border-b-0" value="people">
                 <AccordionTrigger className="py-2 hover:no-underline">
                   <div className="flex gap-2">
-                    <IconUsers className="h-6 w-6 text-primary" stroke="1.5" />{" "}
-                    People
+                    <IconUsers className="h-6 w-6" stroke="1.5" /> People
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
@@ -178,7 +168,6 @@ export default function HamburgerMenu() {
               </AccordionItem>
             </Accordion>
           </div>
-          <ModeToggle />
         </div>
       </SheetContent>
     </Sheet>
