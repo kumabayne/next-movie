@@ -13,7 +13,7 @@ import { formatDate } from "@/lib/utils";
 export default function HeroCard({ item }: { item: MovieType }) {
   return (
     <Link className="relative block" href={`/movie/${item.id}`}>
-      <div className="relative max-h-[80svh]">
+      <div className="relative max-h-[90svh]">
         <Image
           alt={item.title}
           className="overflow-hidden object-cover object-center"
