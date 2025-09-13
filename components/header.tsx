@@ -26,7 +26,7 @@ export default async function Header() {
             <Navigation />
           </div>
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden h-10 lg:block">
           {session ? (
             <ProfileMenu
               fallback={session.user?.name?.charAt(0) || "a"}

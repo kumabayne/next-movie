@@ -22,21 +22,33 @@ export default function ProfileMenu({
       <DropdownMenuTrigger className="rounded-full">
         <UserAvatar fallback={fallback} src={src} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mt-2 min-w-48" align="end">
+      <DropdownMenuContent
+        className="mt-2 min-w-48 border-black/10 bg-black/80"
+        align="end"
+      >
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link className="block cursor-pointer" href="/profile">
+          <Link
+            className="block cursor-pointer hover:bg-white/10 focus:bg-white/10"
+            href="/profile"
+          >
             Profile
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link className="block cursor-pointer" href="/watchlist">
+          <Link
+            className="block cursor-pointer hover:bg-white/10 focus:bg-white/10"
+            href="/watchlist"
+          >
             Watchlist
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link className="block cursor-pointer" href="/settings">
+          <Link
+            className="block cursor-pointer hover:bg-white/10 focus:bg-white/10"
+            href="/settings"
+          >
             Settings
           </Link>
         </DropdownMenuItem>
@@ -47,10 +59,10 @@ export default function ProfileMenu({
               "use server";
               await signOut();
             }}
-            className="!px-0 !py-0"
+            className="!px-0 !py-0 focus:bg-white/10"
           >
             <button
-              className="block grow cursor-pointer px-2 py-1.5 text-left"
+              className="block grow cursor-pointer px-2 py-1.5 text-left hover:bg-white/10 focus:bg-white/10"
               type="submit"
             >
               Sign out
