@@ -65,22 +65,34 @@ export default function HamburgerMenu() {
                 <AccordionContent>
                   <ul>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/movies/now-playing"
+                      >
                         In Theaters
                       </Link>
                     </li>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/movies/streaming"
+                      >
                         Streaming
                       </Link>
                     </li>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/tv/airing-today"
+                      >
                         On TV
                       </Link>
                     </li>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/movies/rentals"
+                      >
                         For Rent
                       </Link>
                     </li>
@@ -96,22 +108,34 @@ export default function HamburgerMenu() {
                 <AccordionContent>
                   <ul>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/movies/now-playing"
+                      >
                         In Theaters
                       </Link>
                     </li>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/movies/popular"
+                      >
                         Popular
                       </Link>
                     </li>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/movies/top-rated"
+                      >
                         Top Rated
                       </Link>
                     </li>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/movies/upcoming"
+                      >
                         Coming Soon
                       </Link>
                     </li>
@@ -128,22 +152,31 @@ export default function HamburgerMenu() {
                 <AccordionContent>
                   <ul>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/tv/airing-today"
+                      >
                         On TV
                       </Link>
                     </li>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/tv/on-the-air"
+                      >
                         Listings
                       </Link>
                     </li>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link className="block py-2 pl-8 pr-2" href="/tv/popular">
                         Popular
                       </Link>
                     </li>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link
+                        className="block py-2 pl-8 pr-2"
+                        href="/tv/top-rated"
+                      >
                         Top Rated
                       </Link>
                     </li>
@@ -159,7 +192,7 @@ export default function HamburgerMenu() {
                 <AccordionContent>
                   <ul>
                     <li>
-                      <Link className="block py-2 pl-8 pr-2" href="/movies">
+                      <Link className="block py-2 pl-8 pr-2" href="/people">
                         Popular
                       </Link>
                     </li>

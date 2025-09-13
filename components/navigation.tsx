@@ -13,7 +13,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import {
   Icon,
@@ -36,7 +35,7 @@ const movies: {
 }[] = [
   {
     title: "In Theaters",
-    href: "/movies/now_playing",
+    href: "/movies/now-playing",
     description: "Check out the latest movies in theaters now.",
     Icon: IconTheater,
   },
@@ -48,7 +47,7 @@ const movies: {
   },
   {
     title: "Top Rated",
-    href: "/movies/top_rated",
+    href: "/movies/top-rated",
     description: "Who gave this 5 stars?",
     Icon: IconStar,
   },
@@ -68,13 +67,13 @@ const tv: {
 }[] = [
   {
     title: "On TV",
-    href: "/tv/airing_today",
+    href: "/tv/airing-today",
     description: "Do people still watch Tv? Find out what's on now.",
     Icon: IconDeviceTv,
   },
   {
     title: "Listings",
-    href: "/tv/on_the_air",
+    href: "/tv/on-the-air",
     description: "Missed the latest episode? Never miss an episode again.",
     Icon: IconHelpSquareRounded,
   },
@@ -86,7 +85,7 @@ const tv: {
   },
   {
     title: "Top Rated",
-    href: "/tv/top_rated",
+    href: "/tv/top-rated",
     description:
       "I still don't know who Walter White is and at this point I'm too afraid to ask.",
     Icon: IconStar,
@@ -105,7 +104,7 @@ export default function Navigation() {
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               <ListItem
                 className="hover:bg-white/10"
-                href="/movies/now_playing"
+                href="/movies/now-playing"
                 title="In Theaters"
                 Icon={IconTheater}
               >
@@ -113,7 +112,7 @@ export default function Navigation() {
               </ListItem>
               <ListItem
                 className="hover:bg-white/10"
-                href="/streaming/movies"
+                href="/movies/streaming"
                 title="Streaming"
                 Icon={IconCast}
               >
@@ -121,7 +120,7 @@ export default function Navigation() {
               </ListItem>
               <ListItem
                 className="hover:bg-white/10"
-                href="/tv/airing_today"
+                href="/tv/airing-today"
                 title="On TV"
                 Icon={IconDeviceTv}
               >
