@@ -32,7 +32,11 @@ export default function MediaRow({
               key={item.id}
               className="basis-[152px] pl-2 sm:basis-[168px] md:basis-[192px] md:pl-4 xl:basis-[226px] xl:pl-6"
             >
-              <MediaCard key={item.id} item={item} />
+              <MediaCard
+                key={item.id}
+                item={item}
+                imageClassName="h-[216px] w-36 rounded-xl sm:h-60 sm:w-40 md:h-[264px] md:w-44 xl:h-[303px] xl:w-[202px]"
+              />
             </CarouselItem>
           ))}
         </CarouselContent>

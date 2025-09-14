@@ -15,8 +15,12 @@ import {
 
 export default function MediaCard({
   item,
+  imageClassName,
+  type,
 }: {
   item: MovieType | PersonType | TVShow;
+  imageClassName?: string;
+  type?: string;
 }) {
   const src =
     "poster_path" in item && item.poster_path
@@ -28,7 +32,7 @@ export default function MediaCard({
   return (
     <Link
       className="relative flex flex-col"
-      href={`/${item.media_type}/${item.id}`}
+      href={`/${type || item.media_type}/${item.id}`}
     >
       <div className="relative">
         <div className="absolute right-1.5 top-1.5 z-20 inline-flex flex-col gap-1">
@@ -40,15 +44,15 @@ export default function MediaCard({
           </button>
         </div>
         {src && (
-          <div className="relative">
+          <div className="relative overflow-hidden rounded-xl">
             <div className="to-black/ pointer-events-none absolute inset-0 z-10 rounded-xl bg-gradient-to-bl from-black/40 via-black/0"></div>
             <Image
               alt={"title" in item ? item.title : item.name}
-              className="h-[216px] w-36 rounded-xl sm:h-60 sm:w-40 md:h-[264px] md:w-44 xl:h-[303px] xl:w-[202px]"
-              height="240"
+              className={imageClassName}
+              height="750"
               loading="lazy"
               src={`${configuration.images.secure_base_url}${src}`}
-              width="160"
+              width="500"
             />
           </div>
         )}
