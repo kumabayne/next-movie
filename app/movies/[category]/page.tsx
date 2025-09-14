@@ -41,12 +41,16 @@ export default async function MoviesCategoryPage({
   params: Promise<{ category: string }>;
 }) {
   const category = (await params).category.replaceAll("-", "_");
-  const data = await fetch(`${process.env.TMDB_URL}/movie/${category}`, {
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.TOKEN}`,
+  const data = await fetch(
+    `${process.env.TMDB_URL}/movie/${category}?language=en-US&page=1`,
+    {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.TOKEN}`,
+      },
     },
-  });
+  );
   const movies = await data.json();
   const title = metaData[category].title;
 

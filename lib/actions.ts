@@ -8,6 +8,7 @@ export async function getMediaByCategory(
   const data = await fetch(
     `${process.env.TMDB_URL}/${type}/${category}?language=en-US&page=${page + 1}`,
     {
+      method: "GET",
       headers: {
         accept: "application/json",
         Authorization: `Bearer ${process.env.TOKEN}`,
