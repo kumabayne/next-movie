@@ -1,7 +1,6 @@
 import Container from "@/components/container";
 import MediaFeed from "@/components/media-feed";
 import Typography from "@/components/typography";
-import { capitalizeWords } from "@/lib/utils";
 import { Metadata } from "next";
 import Image from "next/image";
 
