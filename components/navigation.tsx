@@ -96,7 +96,7 @@ export default function Navigation() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger className="rounded-full bg-transparent hover:!bg-white/10">
             Watch Now
           </NavigationMenuTrigger>
@@ -136,7 +136,7 @@ export default function Navigation() {
               </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         <NavigationMenuItem>
           <NavigationMenuTrigger className="rounded-full bg-transparent hover:!bg-white/10">
             Movies
