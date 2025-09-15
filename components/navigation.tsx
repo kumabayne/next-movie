@@ -67,25 +67,25 @@ const tv: {
 }[] = [
   {
     title: "On TV",
-    href: "/tv/airing-today",
+    href: "/tv-shows/airing-today",
     description: "Do people still watch Tv? Find out what's on now.",
     Icon: IconDeviceTv,
   },
   {
     title: "Listings",
-    href: "/tv/on-the-air",
+    href: "/tv-shows/on-the-air",
     description: "Missed the latest episode? Never miss an episode again.",
     Icon: IconHelpSquareRounded,
   },
   {
     title: "Popular",
-    href: "/tv/popular",
+    href: "/tv-shows/popular",
     description: "I need something to talk about at work tomorrow.",
     Icon: IconFlame,
   },
   {
     title: "Top Rated",
-    href: "/tv/top-rated",
+    href: "/tv-shows/top-rated",
     description:
       "I still don't know who Walter White is and at this point I'm too afraid to ask.",
     Icon: IconStar,
@@ -120,7 +120,7 @@ export default function Navigation() {
               </ListItem>
               <ListItem
                 className="hover:bg-white/10"
-                href="/tv/airing-today"
+                href="/tv-shows/airing-today"
                 title="On TV"
                 Icon={IconDeviceTv}
               >
